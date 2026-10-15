@@ -10,7 +10,7 @@ Please reserve the slug "pnscripts-price-history" (it matches the text domain).
 The new version 1.0.3 is uploaded.
 
 Regards,
-Petar Nikolov, PN Scripts
+PN Scripts
 ```
 
 Earlier reply (2026-10-06, 1.0.2) asked for `pnscripts-pricetrail`; the review of 2026-10-07 rejected "PriceTrail" because unrelated price-monitoring and price-history services use it.
