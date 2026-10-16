@@ -73,6 +73,11 @@ composer analyse              # PHPStan level 8 (phpstan-wordpress, WooCommerce 
 bin/install-wp-tests.sh 7.1.2 11.1.2      # creates tests/.wp/wordpress
 composer test:integration
 
+# The same suite on a real MySQL/MariaDB database (a disposable one: it is emptied first)
+DB=mysql DB_HOST=127.0.0.1:3306 DB_NAME=price_history_tests DB_USER=root DB_PASS= TEST_DIR=/path/to/mysql-site bin/install-wp-tests.sh
+PNSCRIPTS_OMNIBUS_WP_DIR=/path/to/mysql-site/wordpress composer test:integration
+# 2026-10-16: 47 tests / 273 assertions OK on MySQL 8.0.46 with WordPress 7.1.3 + WooCommerce 11.2.1
+
 bin/build-zip.sh              # build/pnscripts-price-history-<version>.zip without development files
 ```
 

@@ -5,6 +5,8 @@
 # Usage: bin/install-wp-tests.sh [wp-version] [wc-version]
 # Env:   WP_CLI   command to run WP-CLI (default: wp)
 #        TEST_DIR target directory (default: tests/.wp)
+#        DB=mysql with DB_HOST, DB_NAME, DB_USER, DB_PASS: a real MySQL/MariaDB database
+#                 instead of SQLite (the database is emptied first; never a shop's database)
 set -euo pipefail
 
 WP_VERSION="${1:-latest}"
@@ -31,22 +33,28 @@ else
 fi
 
 fetch "https://downloads.wordpress.org/plugin/woocommerce.$WC_VERSION.zip" "woocommerce-$WC_VERSION.zip"
-fetch "https://downloads.wordpress.org/plugin/sqlite-database-integration.latest-stable.zip" "sqlite.zip"
 unzip -q "$DL/woocommerce-$WC_VERSION.zip" -d "$SITE/wp-content/plugins"
-unzip -q "$DL/sqlite.zip" -d "$SITE/wp-content/plugins"
-
-SQLITE="$SITE/wp-content/plugins/sqlite-database-integration"
-sed -e "s#{SQLITE_IMPLEMENTATION_FOLDER_PATH}#$SQLITE#" -e "s#{SQLITE_PLUGIN}#sqlite-database-integration/load.php#g" \
-	"$SQLITE/db.copy" > "$SITE/wp-content/db.php"
+DB="${DB:-sqlite}"
+if [ "$DB" = sqlite ]; then
+	fetch "https://downloads.wordpress.org/plugin/sqlite-database-integration.latest-stable.zip" "sqlite.zip"
+	unzip -q "$DL/sqlite.zip" -d "$SITE/wp-content/plugins"
+	SQLITE="$SITE/wp-content/plugins/sqlite-database-integration"
+	sed -e "s#{SQLITE_IMPLEMENTATION_FOLDER_PATH}#$SQLITE#" -e "s#{SQLITE_PLUGIN}#sqlite-database-integration/load.php#g" \
+		"$SQLITE/db.copy" > "$SITE/wp-content/db.php"
+	DBARGS=(--dbname=wp --dbuser=wp --dbpass=wp)
+else
+	DBARGS=(--dbname="${DB_NAME:-price_history_tests}" --dbuser="${DB_USER:-root}" --dbpass="${DB_PASS:-}" --dbhost="${DB_HOST:-127.0.0.1}")
+fi
 ln -s "$ROOT" "$SITE/wp-content/plugins/pnscripts-price-history"
 
-$WP_CLI --path="$SITE" config create --dbname=wp --dbuser=wp --dbpass=wp --skip-check --extra-php <<'PHP'
+$WP_CLI --path="$SITE" config create "${DBARGS[@]}" --skip-check --extra-php <<'PHP'
 define( 'WP_DEBUG', true );
 define( 'WP_DEBUG_DISPLAY', false );
 define( 'WP_DEBUG_LOG', true );
 define( 'DISABLE_WP_CRON', true );
 define( 'WP_ENVIRONMENT_TYPE', 'local' );
 PHP
+[ "$DB" = sqlite ] || $WP_CLI --path="$SITE" db reset --yes
 $WP_CLI --path="$SITE" core install --url=http://localhost --title="Price History tests" \
 	--admin_user=admin --admin_password="$(head -c 18 /dev/urandom | base64)" --admin_email=admin@example.test --skip-email
 $WP_CLI --path="$SITE" option update timezone_string Europe/Sofia
