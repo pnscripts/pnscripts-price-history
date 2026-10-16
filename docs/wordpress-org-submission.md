@@ -8,8 +8,7 @@ Form: https://wordpress.org/plugins/developers/add/ (log in first; the account n
 
 1. Create or pick the WordPress.org account that will own the plugin and turn on two-factor authentication.
 2. Put that account's username in `readme.txt` → `Contributors:` (it says `pnscripts`, and no WordPress.org profile `pnscripts` exists on 2026-10-05). Commit, then rebuild the zip.
-3. Build the zip: `bin/build-zip.sh` → `build/pnscripts-price-history-1.0.3.zip`
-   (absolute: `/media/petar/c8fc2986-4b79-4d7b-9a8c-e6db653915ac/DEV/Projects/pnscripts/marketplace/woocommerce-omnibus/build/pnscripts-price-history-1.0.3.zip`).
+3. Build the zip: `bin/build-zip.sh` → `build/pnscripts-price-history-1.0.3.zip`.
    The version header and readme `Stable tag` must match (the script refuses otherwise).
 4. Plugin Check 2.1.0 on WordPress 7.1.2 + WooCommerce 11.1.2 with that zip installed: `wp plugin check pnscripts-price-history --include-experimental --include-low-severity-errors --include-low-severity-warnings` must print "No errors found" (it did on 2026-10-10 for 1.0.3; WP-CLI and Plugin Check 2.1.0 are in the sibling repo `../woocommerce-product-tabs/.cache/`).
 5. The name in `Plugin Name:` and in the readme's `=== … ===` line must be identical and must not contain restricted terms such as "WooCommerce" or "WordPress" (the form rejected "…for WooCommerce…" on 2026-10-05). "WooCommerce" in the description and body text is fine. The name must start with a distinctive term ("PN Scripts …"), not with a generic word or another plugin's name (review, 2026-10-06), and must not reuse a brand of an unrelated service with overlapping functionality (review 2026-10-07, "PriceTrail").
