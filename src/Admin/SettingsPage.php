@@ -17,6 +17,7 @@ use Pnscripts\Omnibus\Jobs\Backfill;
 use Pnscripts\Omnibus\Jobs\Queue;
 use Pnscripts\Omnibus\Jobs\Retention;
 use Pnscripts\Omnibus\Plugin;
+use Pnscripts\Omnibus\Records\ManualRecords;
 use Pnscripts\Omnibus\Settings;
 use Pnscripts\Omnibus\Storage\HistoryRepository;
 use WC_Product;
@@ -32,6 +33,8 @@ final class SettingsPage {
 	public const CAPABILITY = 'manage_woocommerce';
 	private const GROUP     = 'pnscripts_omnibus';
 	private const TOOL      = 'pnscripts_omnibus_tool';
+	private const RECORDS   = 'pnscripts_omnibus_records';
+	private const RESULT    = 'pnscripts_omnibus_records_result_';
 	private const PER_PAGE  = 25;
 
 	/**
@@ -49,6 +52,7 @@ final class SettingsPage {
 		add_action( 'admin_menu', array( $this, 'menu' ), 60 );
 		add_action( 'admin_init', array( $this, 'register_setting' ) );
 		add_action( 'admin_post_' . self::TOOL, array( $this, 'handle_tool' ) );
+		add_action( 'admin_post_' . self::RECORDS, array( $this, 'handle_records' ) );
 		add_filter( 'option_page_capability_' . self::GROUP, array( $this, 'capability' ) );
 		add_action( 'update_option_' . Settings::OPTION, array( $this, 'settings_updated' ) );
 		add_filter( 'plugin_action_links_' . plugin_basename( PNSCRIPTS_OMNIBUS_FILE ), array( $this, 'action_links' ) );
@@ -464,6 +468,7 @@ final class SettingsPage {
 		$stats = $this->plugin->repository->stats();
 
 		echo '<h2>' . esc_html__( 'Status', 'pnscripts-price-history' ) . '</h2>';
+		$bytes = $this->plugin->repository->table_bytes();
 		echo '<p>' . esc_html(
 			sprintf(
 				/* translators: 1: number of stored price records, 2: number of products and variations */
@@ -471,6 +476,19 @@ final class SettingsPage {
 				$stats['rows'],
 				$stats['products']
 			)
+		) . ' ' . esc_html(
+			null !== $bytes
+				? sprintf(
+					/* translators: 1: table size such as "1 MB", 2: number of days */
+					__( 'Stored in one table of its own (%1$s, no posts or post meta); history older than %2$d days is deleted automatically, except prices a running discount still needs.', 'pnscripts-price-history' ),
+					size_format( $bytes ),
+					$this->plugin->settings->int( 'retention_days' )
+				)
+				: sprintf(
+					/* translators: %d: number of days */
+					__( 'Stored in one table of its own (no posts or post meta); history older than %d days is deleted automatically, except prices a running discount still needs.', 'pnscripts-price-history' ),
+					$this->plugin->settings->int( 'retention_days' )
+				)
 		) . '</p>';
 
 		$status = get_option( Backfill::STATUS_OPTION, array() );
@@ -531,6 +549,8 @@ final class SettingsPage {
 		}
 		echo '</tbody></table>';
 
+		$this->render_records_import();
+
 		echo '<h2>' . esc_html__( 'Background tasks', 'pnscripts-price-history' ) . '</h2>';
 		printf(
 			'<p>%s <a href="%s">%s</a></p>',
@@ -554,6 +574,91 @@ final class SettingsPage {
 			),
 			esc_html__( 'View in WooCommerce → Status → Scheduled Actions', 'pnscripts-price-history' )
 		);
+	}
+
+	/**
+	 * "Prices from your own records" CSV upload and the result of the last upload.
+	 */
+	private function render_records_import(): void {
+		echo '<h2 id="records">' . esc_html__( 'Add prices from your own records', 'pnscripts-price-history' ) . '</h2>';
+		echo '<p>' . esc_html__( 'Products that were already on sale when this plugin started recording show no notice until the history covers the whole period. If your shop system, accounting or price lists show which prices applied before, upload them here: each line is the price that applied from a day until the next line of the same product. Lines dated after the plugin started recording a product are refused, so the recorded history always wins. You are responsible for these prices; keep the records they come from.', 'pnscripts-price-history' ) . '</p>';
+		echo '<p>' . esc_html__( 'CSV columns: product ID or SKU, date (YYYY-MM-DD), regular price, sale price (empty when there was no sale). A header line is allowed. Example:', 'pnscripts-price-history' ) . '</p>';
+		echo '<pre class="pnscripts-omnibus-csv-example">product,date,regular_price,sale_price' . "\n" . 'SKU-1001,2026-08-01,49.90,' . "\n" . 'SKU-1001,2026-09-20,49.90,39.90' . "\n" . '123,2026-07-15,19.00,</pre>';
+
+		$result = get_transient( self::RESULT . get_current_user_id() );
+		if ( is_array( $result ) && isset( $result['added'], $result['errors'] ) && is_array( $result['errors'] ) ) {
+			delete_transient( self::RESULT . get_current_user_id() );
+			printf(
+				'<div class="notice notice-%1$s inline"><p>%2$s</p>',
+				array() === $result['errors'] ? 'success' : 'warning',
+				esc_html(
+					sprintf(
+						/* translators: 1: number of prices added, 2: number of lines not added */
+						__( 'Prices added: %1$d; lines not added: %2$d.', 'pnscripts-price-history' ),
+						(int) $result['added'],
+						count( $result['errors'] )
+					)
+				)
+			);
+			if ( array() !== $result['errors'] ) {
+				echo '<ul class="pnscripts-omnibus-csv-errors">';
+				foreach ( array_slice( $result['errors'], 0, 50 ) as $error ) {
+					printf(
+						'<li>%s</li>',
+						esc_html(
+							sprintf(
+								/* translators: 1: line number, 2: product ID or SKU, 3: reason */
+								__( 'Line %1$d (%2$s): %3$s', 'pnscripts-price-history' ),
+								(int) ( $error['line'] ?? 0 ),
+								(string) ( $error['product'] ?? '' ),
+								ManualRecords::message( (string) ( $error['error'] ?? '' ) )
+							)
+						)
+					);
+				}
+				echo '</ul>';
+			}
+			echo '</div>';
+		}
+
+		printf( '<form method="post" action="%s" enctype="multipart/form-data" class="pnscripts-omnibus-tool">', esc_url( admin_url( 'admin-post.php' ) ) );
+		printf( '<input type="hidden" name="action" value="%s" />', esc_attr( self::RECORDS ) );
+		wp_nonce_field( self::RECORDS );
+		echo '<label for="pnscripts-omnibus-records-file" class="screen-reader-text">' . esc_html__( 'CSV file', 'pnscripts-price-history' ) . '</label>';
+		echo '<input type="file" id="pnscripts-omnibus-records-file" name="records" accept=".csv,text/csv,text/plain" required /> ';
+		submit_button( __( 'Upload and add prices', 'pnscripts-price-history' ), 'secondary', 'submit', false );
+		echo '</form>';
+		echo '<p class="description">' . esc_html__( 'Also on the product edit screen (one product) and with WP-CLI: wp pnscripts-price-history import-records file.csv', 'pnscripts-price-history' ) . '</p>';
+	}
+
+	/**
+	 * Handle the CSV upload.
+	 */
+	public function handle_records(): void {
+		if ( ! current_user_can( self::CAPABILITY ) ) {
+			wp_die( esc_html__( 'Sorry, you are not allowed to do that.', 'pnscripts-price-history' ), 403 );
+		}
+		check_admin_referer( self::RECORDS );
+
+		$result = array(
+			'added'  => 0,
+			'errors' => array(),
+		);
+		$file   = isset( $_FILES['records']['tmp_name'] ) ? sanitize_text_field( (string) $_FILES['records']['tmp_name'] ) : '';
+		$size   = isset( $_FILES['records']['size'] ) ? absint( $_FILES['records']['size'] ) : 0;
+		if ( '' !== $file && is_uploaded_file( $file ) && $size > 0 && $size <= 2 * MB_IN_BYTES ) {
+			$content = (string) file_get_contents( $file ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents -- Reading the uploaded temporary file; it is not stored.
+			$result  = $this->plugin->manual->import_csv( $content );
+		} else {
+			$result['errors'][] = array(
+				'line'    => 0,
+				'product' => '',
+				'error'   => 'file',
+			);
+		}
+		set_transient( self::RESULT . get_current_user_id(), $result, 300 );
+		wp_safe_redirect( self::url( 'tools' ) . '#records' );
+		exit;
 	}
 
 	/**

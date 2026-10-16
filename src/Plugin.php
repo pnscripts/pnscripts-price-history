@@ -28,6 +28,7 @@ use Pnscripts\Omnibus\Jobs\Backfill;
 use Pnscripts\Omnibus\Jobs\Retention;
 use Pnscripts\Omnibus\Licensing\FreeLicense;
 use Pnscripts\Omnibus\Licensing\LicenseInterface;
+use Pnscripts\Omnibus\Records\ManualRecords;
 use Pnscripts\Omnibus\Reference\ReferenceService;
 use Pnscripts\Omnibus\Storage\HistoryRepository;
 use Pnscripts\Omnibus\Storage\Schema;
@@ -117,6 +118,13 @@ final class Plugin {
 	public readonly ImportRunner $import_runner;
 
 	/**
+	 * Service.
+	 *
+	 * @var ManualRecords
+	 */
+	public readonly ManualRecords $manual;
+
+	/**
 	 * Build services.
 	 */
 	private function __construct() {
@@ -130,6 +138,7 @@ final class Plugin {
 		$this->retention     = new Retention( $this->repository, $this->settings, $this->clock );
 		$this->importers     = new Importers();
 		$this->import_runner = new ImportRunner( $this->importers, $this->repository );
+		$this->manual        = new ManualRecords( $this->repository, $this->clock );
 	}
 
 	/**

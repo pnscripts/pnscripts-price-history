@@ -77,6 +77,7 @@ final class Labels {
 			'import:omnibus'          => __( 'Imported (Omnibus by iWorks)', 'pnscripts-price-history' ),
 			'import:wc-price-history' => __( 'Imported (WC Price History)', 'pnscripts-price-history' ),
 			'import:omnibus-by-ilabs' => __( 'Imported (Omnibus by iLabs)', 'pnscripts-price-history' ),
+			'import:manual'           => __( 'Your records', 'pnscripts-price-history' ),
 		);
 		return $map[ $base ] ?? $source;
 	}

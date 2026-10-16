@@ -10,9 +10,11 @@ declare(strict_types=1);
 namespace Pnscripts\Omnibus\Cli;
 
 use Pnscripts\Omnibus\Admin\Labels;
+use Pnscripts\Omnibus\Domain\ManualEntry;
 use Pnscripts\Omnibus\Import\Importers;
 use Pnscripts\Omnibus\Jobs\Backfill;
 use Pnscripts\Omnibus\Plugin;
+use Pnscripts\Omnibus\Records\ManualRecords;
 use Pnscripts\Omnibus\Storage\HistoryRepository;
 use WC_Product;
 use WP_CLI;
@@ -174,6 +176,75 @@ final class Command {
 		} while ( null !== $step['next'] );
 		HistoryRepository::bump_cache();
 		WP_CLI::success( sprintf( 'Imported %d records, skipped %d entries.', $imported, $skipped ) );
+	}
+
+	/**
+	 * Add a price from your own records (for the time before the plugin recorded the product).
+	 *
+	 * ## OPTIONS
+	 *
+	 * <product>
+	 * : Product or variation ID, or SKU.
+	 *
+	 * <date>
+	 * : Day the price applied from (YYYY-MM-DD, shop time zone), until the next row.
+	 *
+	 * <regular>
+	 * : Regular price.
+	 *
+	 * [<sale>]
+	 * : Sale price in force from that day, if any.
+	 *
+	 * ## EXAMPLES
+	 *
+	 *     wp pnscripts-price-history add-record 123 2026-08-01 49.90
+	 *     wp pnscripts-price-history add-record SKU-7 2026-09-20 49.90 39.90
+	 *
+	 * @subcommand add-record
+	 *
+	 * @param string[] $args Arguments.
+	 */
+	public function add_record( array $args ): void {
+		$product_id = $this->plugin->manual->resolve( (string) ( $args[0] ?? '' ) );
+		$error      = 0 === $product_id
+			? ManualEntry::ERROR_PRODUCT
+			: $this->plugin->manual->add( $product_id, (string) ( $args[1] ?? '' ), (string) ( $args[2] ?? '' ), (string) ( $args[3] ?? '' ) );
+		if ( '' !== $error ) {
+			WP_CLI::error( ManualRecords::message( $error ) );
+		}
+		WP_CLI::success( sprintf( 'Added a price from your records to product %d.', $product_id ) );
+	}
+
+	/**
+	 * Import prices from your own records from a CSV file.
+	 *
+	 * Columns: product ID or SKU, date (YYYY-MM-DD), regular price, sale price (may be empty). A header line is
+	 * allowed; comma, semicolon or tab separated.
+	 *
+	 * ## OPTIONS
+	 *
+	 * <file>
+	 * : Path to the CSV file.
+	 *
+	 * ## EXAMPLES
+	 *
+	 *     wp pnscripts-price-history import-records prices-before-2026-10.csv
+	 *
+	 * @subcommand import-records
+	 *
+	 * @param string[] $args Arguments.
+	 */
+	public function import_records( array $args ): void {
+		$file = (string) ( $args[0] ?? '' );
+		if ( '' === $file || ! is_readable( $file ) ) {
+			WP_CLI::error( 'File not found or not readable.' );
+		}
+		$content = (string) file_get_contents( $file ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents -- Local file given on the command line.
+		$result  = $this->plugin->manual->import_csv( $content );
+		foreach ( $result['errors'] as $error ) {
+			WP_CLI::warning( sprintf( 'Line %d (%s): %s', $error['line'], $error['product'], ManualRecords::message( $error['error'] ) ) );
+		}
+		WP_CLI::success( sprintf( 'Prices added: %d; lines not added: %d.', $result['added'], count( $result['errors'] ) ) );
 	}
 
 	/**

@@ -12,6 +12,8 @@ namespace Pnscripts\Omnibus\Reference;
 use Pnscripts\Omnibus\Capture\PriceRecorder;
 use Pnscripts\Omnibus\Capture\TaxWatcher;
 use Pnscripts\Omnibus\Domain\Clock;
+use Pnscripts\Omnibus\Domain\ManualEntry;
+use Pnscripts\Omnibus\Domain\PriceRecord;
 use Pnscripts\Omnibus\Domain\PriceTimeline;
 use Pnscripts\Omnibus\Domain\ReferencePriceCalculator;
 use Pnscripts\Omnibus\Domain\ReferenceResult;
@@ -114,7 +116,7 @@ final class ReferenceService {
 		}
 
 		$timeline = PriceTimeline::from_records( $records );
-		$result   = ( new ReferencePriceCalculator( wp_timezone() ) )->calculate( $timeline, $now, $policy, $this->launch_time( $product ) );
+		$result   = ( new ReferencePriceCalculator( wp_timezone() ) )->calculate( $timeline, $now, $policy, self::launch_with_records( $this->launch_time( $product ), $records ) );
 
 		$tax_changed = TaxWatcher::changed_at();
 		if ( $result->is_known() && null !== $tax_changed && null !== $result->window_start && $tax_changed > $result->window_start ) {
@@ -126,6 +128,22 @@ final class ReferenceService {
 			return ReferenceResult::unknown( ReferenceResult::REASON_NOT_CAPTURED, null, $policy->period_days );
 		}
 		return $result;
+	}
+
+	/**
+	 * A price the owner entered from their own records proves the product was offered on that day, even when
+	 * WooCommerce created it later (a shop moved from another system keeps its products' history this way).
+	 *
+	 * @param int|null      $launch  Launch time from the product.
+	 * @param PriceRecord[] $records Records of the product.
+	 */
+	public static function launch_with_records( ?int $launch, array $records ): ?int {
+		foreach ( $records as $record ) {
+			if ( ManualEntry::SOURCE === $record->source && null !== $launch && $record->changed_at < $launch ) {
+				$launch = $record->changed_at;
+			}
+		}
+		return $launch;
 	}
 
 	/**

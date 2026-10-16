@@ -4,7 +4,7 @@ Tags: lowest price, price history, discount, sale price, price indication
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 1.0.3
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -24,7 +24,7 @@ It is built around one promise: **if the price history cannot prove the number, 
 
 * Simple products, external products and **each variation** separately, regular and sale price, including the **sale schedule**.
 * Every way a price is saved: product editor, quick edit, bulk edit, CSV import, REST API, WP-CLI, WooCommerce's scheduled sale start and end, and code that calls `$product->save()`. Price fields written directly to the database by other software are picked up at the end of the request.
-* Stored in its own database table (not in post meta), only when the price actually changes.
+* Stored in its own database table (not in posts or post meta), only when the price actually changes. A record takes about 210 bytes with its indexes (50,000 records ≈ 10 MB, measured on MySQL 8.0); the Tools tab shows the table size.
 * A background job (Action Scheduler) records the starting prices of your catalogue after installation. No catalogue scans on page load.
 * Keeps 90 days of history by default (configurable, minimum 31) and never deletes prices that a running discount still needs.
 
@@ -49,6 +49,10 @@ It is built around one promise: **if the price history cannot prove the number, 
 = Brings your existing history =
 
 One-click, read-only import of the price history saved by Omnibus — show the lowest price (iWorks), WC Price History for Omnibus and Omnibus by iLabs (separate plugins by other authors). Imported prices only fill the time before this plugin started recording.
+
+= Day one, even mid-sale =
+
+Products that were already on sale when you installed the plugin normally show nothing until 30 days of history exist. If your shop system, accounting or price lists show the earlier prices, **add them from your own records**: on the product screen, as a CSV upload (product ID or SKU, date, regular price, sale price) or with WP-CLI. They only fill the time before the plugin's own first record, never overwrite it, and are labelled "Your records" in the history.
 
 = Admin tools =
 
@@ -88,6 +92,22 @@ No plugin can promise that. It records prices and shows the lowest prior price a
 = Why is no notice shown for some discounted products? =
 
 Because the history cannot prove the number yet: the product was already on sale when recording started, it was launched recently and your rules hide the notice for new products, or prices were changed while the plugin was inactive. The Coverage report shows the reason for every product.
+
+= My products were already on sale when I installed the plugin. Do I have to wait 30 days? =
+
+Not if you know the earlier prices. Import them from another lowest-price plugin, or add them from your own records (product screen, CSV upload under WooCommerce → Price History → Import and tools, or `wp pnscripts-price-history import-records file.csv`): one line for the regular price from a day at least 30 days before the discount, one line for the day the discount started. You are responsible for these prices, so keep the records they come from.
+
+= Will it fill my database? =
+
+No. Prices are stored in one table of the plugin's own, one row only when a price really changes (not on every save or page view), and rows older than the retention period (90 days by default) are deleted automatically, except those a running discount still needs. Nothing is written to posts or post meta. For scale: 50,000 price changes take about 10 MB (MySQL 8.0).
+
+= Does it catch prices changed by bulk editors and imports? =
+
+Yes, when they save through WooCommerce (product editor, quick and bulk edit, CSV import, REST API, WP-CLI, spreadsheet-style editors that call WooCommerce). Prices written straight into the database by other software are detected at the end of the request, and the "Check the catalogue" tool finds changes that bypassed WordPress entirely; such gaps make the notice disappear instead of showing a wrong number.
+
+= Which price does it use with role or wholesale pricing plugins? =
+
+The product's own regular and sale prices as saved in WooCommerce. Prices that a plugin calculates on the fly for a customer group are not part of the history; if your shop shows such a price as a discount, the notice is hidden for it ("a discount that is not in the recorded prices").
 
 = What happens to a progressive discount? =
 
@@ -134,9 +154,15 @@ Omnibus — show the lowest price (iWorks), WC Price History for Omnibus, and Om
 5. Settings: rule presets, period, new products, perishable goods, display, texts and data retention.
 6. Coverage report: every product and variation on sale with its prior price or the reason it is hidden.
 7. Product edit screen: price history per variation and the computed prior price.
-8. Import and tools: catalogue check, imports from other price-history plugins, background tasks.
+8. Import and tools: catalogue check, imports from other price-history plugins, prices from your own records, background tasks.
+9. Product edit screen: adding a price from your own records for a product that was already on sale.
 
 == Changelog ==
+
+= 1.1.0 =
+* New: add prices from your own records (product screen, CSV upload, WP-CLI) so products that were already on sale at installation can show a provable notice on day one. Stored like imported history: only before the plugin's own records, never over them.
+* New: the Tools tab shows the size of the history table and the retention period.
+* WooCommerce tested up to 11.2; Bulgarian, German and Polish translations updated.
 
 = 1.0.3 =
 * Renamed to PN Scripts Price History for Discounts (slug and text domain `pnscripts-price-history`) after the WordPress.org review. Settings move to WooCommerce → Price History, the WP-CLI command is `wp pnscripts-price-history`, the shortcode is `[pnscripts_price_history]` (the 1.0.0 tag `[pnscripts_omnibus_price]` still works), and the plugin's address is https://pnscripts.com/marketplace/pnscripts-price-history. Settings and price history are kept.
@@ -151,6 +177,9 @@ Omnibus — show the lowest price (iWorks), WC Price History for Omnibus, and Om
 * First release.
 
 == Upgrade Notice ==
+
+= 1.1.0 =
+Adds prices from your own records for products that were already on sale at installation. No database changes.
 
 = 1.0.3 =
 New name and slug (pnscripts-price-history). Settings and price history are kept.

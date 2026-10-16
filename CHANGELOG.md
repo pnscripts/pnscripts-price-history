@@ -6,8 +6,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+## [1.1.0] - 2026-10-16
+
+### Added
+
+- **Prices from your own records**: for products that were already on sale when recording started, enter the prices that applied before (product edit screen, CSV upload under Import and tools, or `wp pnscripts-price-history add-record` / `import-records`). They are stored like imported history: only before the plugin's own first record of a product, never over it, and they can be removed again from the product screen. A product whose discount started before the install can show a provable notice on day one instead of after 30 days.
+- Tools tab shows the size of the history table and the retention period.
+
 ### Changed
 
+- WooCommerce tested up to 11.2. Bulgarian, German and Polish translations updated.
 - GitHub repository renamed to `pnscripts/pnscripts-price-history` (was `pnscripts/woocommerce-omnibus`; GitHub redirects the old address) and the Composer package to `pnscripts/pnscripts-price-history` (it was never on Packagist).
 
 ## [1.0.3] - 2026-10-10
@@ -57,7 +65,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - Translations: Bulgarian, Polish, German.
 - HPOS and Cart/Checkout blocks compatibility declarations.
 
-[Unreleased]: https://github.com/pnscripts/pnscripts-price-history/compare/v1.0.3...HEAD
+[Unreleased]: https://github.com/pnscripts/pnscripts-price-history/compare/v1.1.0...HEAD
+[1.1.0]: https://github.com/pnscripts/pnscripts-price-history/compare/v1.0.3...v1.1.0
 [1.0.3]: https://github.com/pnscripts/pnscripts-price-history/compare/v1.0.2...v1.0.3
 [1.0.2]: https://github.com/pnscripts/pnscripts-price-history/compare/v1.0.1...v1.0.2
 [1.0.1]: https://github.com/pnscripts/pnscripts-price-history/compare/v1.0.0...v1.0.1

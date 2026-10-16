@@ -1,18 +1,21 @@
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: PN Scripts Price History 1.0.3\n"
-"Report-Msgid-Bugs-To: https://pnscripts.com/marketplace/pnscripts-price-history\n"
+"Project-Id-Version: PN Scripts Price History 1.1.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/pnscripts-price-"
+"history\n"
+"POT-Creation-Date: 2026-10-16T16:37:09+00:00\n"
+"PO-Revision-Date: 2026-10-10 12:00+0300\n"
 "Last-Translator: PN Scripts (machine-assisted, needs native review)\n"
 "Language-Team: PN Scripts <https://pnscripts.com>\n"
+"Language: pl_PL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-04T14:15:47+00:00\n"
-"PO-Revision-Date: 2026-10-10 12:00+0300\n"
-"Language: pl_PL\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
-"X-Generator: WP-CLI 2.12.0\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 "
+"|| n%100>14) ? 1 : 2);\n"
 "X-Domain: pnscripts-price-history\n"
+"X-Generator: WP-CLI 2.12.0\n"
 
 #. Plugin Name of the plugin
 #: pnscripts-price-history.php
@@ -26,8 +29,14 @@ msgstr "https://pnscripts.com/marketplace/pnscripts-price-history"
 
 #. Description of the plugin
 #: pnscripts-price-history.php
-msgid "Records every product and variation price change and shows the lowest price in the 30 days before a discount (EU Price Indication Directive, Art. 6a). Shows nothing when the history is incomplete."
-msgstr "Zapisuje każdą zmianę ceny produktów i wariantów oraz pokazuje najniższą cenę z 30 dni przed obniżką (dyrektywa w sprawie podawania cen, art. 6a). Nie pokazuje niczego, gdy historia jest niepełna."
+msgid ""
+"Records every product and variation price change and shows the lowest price "
+"in the 30 days before a discount (EU Price Indication Directive, Art. 6a). "
+"Shows nothing when the history is incomplete."
+msgstr ""
+"Zapisuje każdą zmianę ceny produktów i wariantów oraz pokazuje najniższą "
+"cenę z 30 dni przed obniżką (dyrektywa w sprawie podawania cen, art. 6a). "
+"Nie pokazuje niczego, gdy historia jest niepełna."
 
 #. Author of the plugin
 #: pnscripts-price-history.php
@@ -39,20 +48,25 @@ msgstr "PN Scripts"
 msgid "https://pnscripts.com"
 msgstr "https://pnscripts.com"
 
-#: src/Admin/CategoryFields.php:43
-#: src/Admin/CategoryFields.php:55
-#: src/Admin/ProductPanel.php:206
-#: src/Admin/SettingsPage.php:260
+#: src/Admin/CategoryFields.php:43 src/Admin/CategoryFields.php:55
+#: src/Admin/ProductPanel.php:349 src/Admin/SettingsPage.php:264
 msgid "Perishable goods"
 msgstr "Towary szybko psujące się"
 
 #: src/Admin/CategoryFields.php:44
-msgid "Products in this category perish or expire quickly. Only used when the perishable-goods exemption is enabled in the Price History settings."
-msgstr "Produkty z tej kategorii szybko się psują lub mają krótki termin przydatności. Używane tylko wtedy, gdy w ustawieniach Price History włączono wyłączenie dla towarów szybko psujących się."
+msgid ""
+"Products in this category perish or expire quickly. Only used when the "
+"perishable-goods exemption is enabled in the Price History settings."
+msgstr ""
+"Produkty z tej kategorii szybko się psują lub mają krótki termin "
+"przydatności. Używane tylko wtedy, gdy w ustawieniach Price History włączono "
+"wyłączenie dla towarów szybko psujących się."
 
 #: src/Admin/CategoryFields.php:61
 msgid "Products in this category perish or expire quickly."
-msgstr "Produkty z tej kategorii szybko się psują lub mają krótki termin przydatności."
+msgstr ""
+"Produkty z tej kategorii szybko się psują lub mają krótki termin "
+"przydatności."
 
 #: src/Admin/Labels.php:28
 msgid "Shown"
@@ -75,40 +89,70 @@ msgid "No price history has been recorded yet."
 msgstr "Nie zapisano jeszcze historii cen."
 
 #: src/Admin/Labels.php:43
-msgid "Prices during part of the period are unknown (the plugin was inactive or prices were changed outside WooCommerce)."
-msgstr "Ceny z części okresu są nieznane (wtyczka była nieaktywna albo ceny zmieniono poza WooCommerce)."
+msgid ""
+"Prices during part of the period are unknown (the plugin was inactive or "
+"prices were changed outside WooCommerce)."
+msgstr ""
+"Ceny z części okresu są nieznane (wtyczka była nieaktywna albo ceny "
+"zmieniono poza WooCommerce)."
 
 #: src/Admin/Labels.php:44
-msgid "The recorded history does not cover the whole period before the discount yet."
+msgid ""
+"The recorded history does not cover the whole period before the discount yet."
 msgstr "Zapisana historia nie obejmuje jeszcze całego okresu przed obniżką."
 
 #: src/Admin/Labels.php:45
-msgid "The product was launched less than the period before the discount and the current rules hide the notice for such products."
-msgstr "Produkt jest w sprzedaży krócej niż okres przed obniżką, a obecne zasady ukrywają informację dla takich produktów."
+msgid ""
+"The product was launched less than the period before the discount and the "
+"current rules hide the notice for such products."
+msgstr ""
+"Produkt jest w sprzedaży krócej niż okres przed obniżką, a obecne zasady "
+"ukrywają informację dla takich produktów."
 
 #: src/Admin/Labels.php:46
-msgid "The product was already on sale when recording started, so the start of the discount is unknown."
-msgstr "Produkt był już w promocji, gdy rozpoczęto zapisywanie, więc początek obniżki jest nieznany."
+msgid ""
+"The product was already on sale when recording started, so the start of the "
+"discount is unknown."
+msgstr ""
+"Produkt był już w promocji, gdy rozpoczęto zapisywanie, więc początek "
+"obniżki jest nieznany."
 
 #: src/Admin/Labels.php:47
-msgid "There is no price before the discount (the product was launched on sale or had no price)."
-msgstr "Brak ceny przed obniżką (produkt od początku był w promocji albo nie miał ceny)."
+msgid ""
+"There is no price before the discount (the product was launched on sale or "
+"had no price)."
+msgstr ""
+"Brak ceny przed obniżką (produkt od początku był w promocji albo nie miał "
+"ceny)."
 
 #: src/Admin/Labels.php:48
-msgid "WooCommerce shows a discount that is not in the recorded prices (for example a price changed by another plugin on the fly)."
-msgstr "WooCommerce pokazuje obniżkę, której nie ma w zapisanych cenach (np. cena zmieniana na bieżąco przez inną wtyczkę)."
+msgid ""
+"WooCommerce shows a discount that is not in the recorded prices (for example "
+"a price changed by another plugin on the fly)."
+msgstr ""
+"WooCommerce pokazuje obniżkę, której nie ma w zapisanych cenach (np. cena "
+"zmieniana na bieżąco przez inną wtyczkę)."
 
 #: src/Admin/Labels.php:49
 msgid "Marked as perishable and the perishable-goods exemption is enabled."
-msgstr "Oznaczony jako szybko psujący się, a wyłączenie dla towarów szybko psujących się jest włączone."
+msgstr ""
+"Oznaczony jako szybko psujący się, a wyłączenie dla towarów szybko psujących "
+"się jest włączone."
 
 #: src/Admin/Labels.php:50
-msgid "Variable and grouped products are evaluated per variation or child product."
-msgstr "Produkty z wariantami i produkty grupowe są oceniane osobno dla każdego wariantu lub produktu podrzędnego."
+msgid ""
+"Variable and grouped products are evaluated per variation or child product."
+msgstr ""
+"Produkty z wariantami i produkty grupowe są oceniane osobno dla każdego "
+"wariantu lub produktu podrzędnego."
 
 #: src/Admin/Labels.php:51
-msgid "The tax settings or rates changed during the period, so earlier prices cannot be converted with today's taxes."
-msgstr "Ustawienia lub stawki podatku zmieniły się w tym okresie, więc wcześniejszych cen nie można przeliczyć według dzisiejszych podatków."
+msgid ""
+"The tax settings or rates changed during the period, so earlier prices "
+"cannot be converted with today's taxes."
+msgstr ""
+"Ustawienia lub stawki podatku zmieniły się w tym okresie, więc "
+"wcześniejszych cen nie można przeliczyć według dzisiejszych podatków."
 
 #: src/Admin/Labels.php:64
 msgid "Product editor"
@@ -150,8 +194,7 @@ msgstr "AJAX"
 msgid "Code"
 msgstr "Kod"
 
-#: src/Admin/Labels.php:74
-#: src/Admin/SettingsPage.php:300
+#: src/Admin/Labels.php:74 src/Admin/SettingsPage.php:304
 msgid "First record"
 msgstr "Pierwszy zapis"
 
@@ -175,233 +218,364 @@ msgstr "Zaimportowano (WC Price History)"
 msgid "Imported (Omnibus by iLabs)"
 msgstr "Zaimportowano (Omnibus by iLabs)"
 
-#: src/Admin/ProductPanel.php:66
+#: src/Admin/Labels.php:80
+msgid "Your records"
+msgstr "Twoje dane"
+
+#: src/Admin/ProductPanel.php:75
 msgid "Price history and lowest prior price"
 msgstr "Historia cen i najniższa cena sprzed obniżki"
 
-#: src/Admin/ProductPanel.php:85
-msgid "Recorded automatically on every price change. This plugin helps display prices; you remain responsible for compliance."
-msgstr "Zapisywana automatycznie przy każdej zmianie ceny. Wtyczka pomaga wyświetlać ceny; odpowiedzialność za zgodność z przepisami pozostaje po Twojej stronie."
+#: src/Admin/ProductPanel.php:94
+msgid ""
+"Recorded automatically on every price change. This plugin helps display "
+"prices; you remain responsible for compliance."
+msgstr ""
+"Zapisywana automatycznie przy każdej zmianie ceny. Wtyczka pomaga wyświetlać "
+"ceny; odpowiedzialność za zgodność z przepisami pozostaje po Twojej stronie."
 
-#: src/Admin/ProductPanel.php:90
+#: src/Admin/ProductPanel.php:99
 msgid "No variations yet."
 msgstr "Brak wariantów."
 
-#: src/Admin/ProductPanel.php:100
+#: src/Admin/ProductPanel.php:109
 msgid "Grouped products have no own price; see each child product."
-msgstr "Produkty grupowe nie mają własnej ceny; sprawdź poszczególne produkty podrzędne."
+msgstr ""
+"Produkty grupowe nie mają własnej ceny; sprawdź poszczególne produkty "
+"podrzędne."
 
-#: src/Admin/ProductPanel.php:118
+#: src/Admin/ProductPanel.php:127
 msgid "No prices recorded yet."
 msgstr "Nie zapisano jeszcze żadnych cen."
 
-#: src/Admin/ProductPanel.php:123
+#: src/Admin/ProductPanel.php:133 src/Admin/ProductPanel.php:178
 msgid "From"
 msgstr "Od"
 
-#: src/Admin/ProductPanel.php:124
+#: src/Admin/ProductPanel.php:134
 msgid "Regular"
 msgstr "Regularna"
 
-#: src/Admin/ProductPanel.php:125
+#: src/Admin/ProductPanel.php:135
 msgid "Sale"
 msgstr "Promocyjna"
 
-#: src/Admin/ProductPanel.php:126
+#: src/Admin/ProductPanel.php:136
 msgid "Sale schedule"
 msgstr "Okres promocji"
 
-#: src/Admin/ProductPanel.php:127
+#: src/Admin/ProductPanel.php:137
 msgid "Price"
 msgstr "Cena"
 
-#: src/Admin/ProductPanel.php:128
+#: src/Admin/ProductPanel.php:138
 msgid "Source"
 msgstr "Źródło"
 
-#: src/Admin/ProductPanel.php:137
-msgid "Prices as entered in the shop (before the tax display setting). Newest first, up to 30 rows."
-msgstr "Ceny w postaci wprowadzonej w sklepie (przed ustawieniem wyświetlania podatku). Najnowsze na górze, maks. 30 wierszy."
+#: src/Admin/ProductPanel.php:147
+msgid ""
+"Prices as entered in the shop (before the tax display setting). Newest "
+"first, up to 30 rows."
+msgstr ""
+"Ceny w postaci wprowadzonej w sklepie (przed ustawieniem wyświetlania "
+"podatku). Najnowsze na górze, maks. 30 wierszy."
 
 #: src/Admin/ProductPanel.php:164
+msgid "Add a price from your own records"
+msgstr "Dodaj cenę z własnych danych"
+
+#. translators: %s: date when the plugin started recording this product
+#: src/Admin/ProductPanel.php:169
+#, php-format
+msgid ""
+"For the time before this plugin started recording this product (%s): the "
+"price that applied from a day until the next row. Add one row for the "
+"regular price and one for the day the current discount started. You are "
+"responsible for these prices; keep the records they come from."
+msgstr ""
+"Dla okresu sprzed rozpoczęcia zapisywania tego produktu przez wtyczkę (%s): "
+"cena obowiązująca od danego dnia do następnego wiersza. Dodaj jeden wiersz z "
+"ceną regularną i jeden z dniem rozpoczęcia obecnej obniżki. Odpowiadasz za "
+"te ceny; zachowaj dokumenty, z których pochodzą."
+
+#: src/Admin/ProductPanel.php:172
+msgid ""
+"The price that applied from a day until the next row. You are responsible "
+"for these prices; keep the records they come from."
+msgstr ""
+"Cena obowiązująca od danego dnia do następnego wiersza. Odpowiadasz za te "
+"ceny; zachowaj dokumenty, z których pochodzą."
+
+#: src/Admin/ProductPanel.php:185
+msgid "Regular price"
+msgstr "Cena regularna"
+
+#: src/Admin/ProductPanel.php:191
+msgid "Sale price (optional)"
+msgstr "Cena promocyjna (opcjonalnie)"
+
+#: src/Admin/ProductPanel.php:195
+msgid ""
+"Saved when you update the product. Many products at once: WooCommerce → "
+"Price History → Import and tools."
+msgstr ""
+"Zapisywane przy aktualizacji produktu. Wiele produktów naraz: WooCommerce → "
+"Price History → Import i narzędzia."
+
+#: src/Admin/ProductPanel.php:219
+msgid "A price from your records was removed."
+msgstr "Usunięto cenę z Twoich danych."
+
+#: src/Admin/ProductPanel.php:238
+msgid "The price from your records was added to the price history."
+msgstr "Cenę z Twoich danych dodano do historii cen."
+
+#: src/Admin/ProductPanel.php:266
+msgid "Price History:"
+msgstr "Price History:"
+
+#: src/Admin/ProductPanel.php:298
 msgid "(unknown before)"
 msgstr "(wcześniej nieznana)"
 
+#: src/Admin/ProductPanel.php:305
+msgid "Remove"
+msgstr "Usuń"
+
 #. translators: 1: number of days, 2: date when the discount started
-#: src/Admin/ProductPanel.php:183
+#: src/Admin/ProductPanel.php:326
 #, php-format
 msgid "lowest price in the %1$d days before the discount that started on %2$s:"
 msgstr "najniższa cena z %1$d dni przed obniżką rozpoczętą %2$s:"
 
-#: src/Admin/ProductPanel.php:207
-msgid "Goods that perish or expire quickly. Only used when the perishable-goods exemption is enabled in the Price History settings."
-msgstr "Towary, które szybko się psują lub mają krótki termin przydatności. Używane tylko wtedy, gdy w ustawieniach Price History włączono wyłączenie dla towarów szybko psujących się."
+#: src/Admin/ProductPanel.php:350
+msgid ""
+"Goods that perish or expire quickly. Only used when the perishable-goods "
+"exemption is enabled in the Price History settings."
+msgstr ""
+"Towary, które szybko się psują lub mają krótki termin przydatności. Używane "
+"tylko wtedy, gdy w ustawieniach Price History włączono wyłączenie dla "
+"towarów szybko psujących się."
 
-#: src/Admin/SettingsPage.php:70
+#: src/Admin/SettingsPage.php:74
 msgid "Price History: lowest price in the 30 days before a discount"
 msgstr "Price History: najniższa cena z 30 dni przed obniżką"
 
-#: src/Admin/SettingsPage.php:71
+#: src/Admin/SettingsPage.php:75
 msgid "Price History"
 msgstr "Price History"
 
-#: src/Admin/SettingsPage.php:88
-#: src/Admin/SettingsPage.php:145
+#: src/Admin/SettingsPage.php:92 src/Admin/SettingsPage.php:149
 msgid "Settings"
 msgstr "Ustawienia"
 
-#: src/Admin/SettingsPage.php:140
+#: src/Admin/SettingsPage.php:144
 msgid "Sorry, you are not allowed to access this page."
 msgstr "Nie masz uprawnień do tej strony."
 
-#: src/Admin/SettingsPage.php:146
+#: src/Admin/SettingsPage.php:150
 msgid "Coverage report"
 msgstr "Raport pokrycia"
 
-#: src/Admin/SettingsPage.php:147
+#: src/Admin/SettingsPage.php:151
 msgid "Import and tools"
 msgstr "Import i narzędzia"
 
-#: src/Admin/SettingsPage.php:161
+#: src/Admin/SettingsPage.php:165
 msgid "Price History: lowest price before a discount"
 msgstr "Price History: najniższa cena przed obniżką"
 
-#: src/Admin/SettingsPage.php:173
-msgid "This plugin helps display prices; you remain responsible for compliance. It does not give legal advice. Check the rules that apply to your shop."
-msgstr "Wtyczka pomaga wyświetlać ceny; odpowiedzialność za zgodność z przepisami pozostaje po Twojej stronie. Wtyczka nie udziela porad prawnych. Sprawdź przepisy, które dotyczą Twojego sklepu."
+#: src/Admin/SettingsPage.php:177
+msgid ""
+"This plugin helps display prices; you remain responsible for compliance. It "
+"does not give legal advice. Check the rules that apply to your shop."
+msgstr ""
+"Wtyczka pomaga wyświetlać ceny; odpowiedzialność za zgodność z przepisami "
+"pozostaje po Twojej stronie. Wtyczka nie udziela porad prawnych. Sprawdź "
+"przepisy, które dotyczą Twojego sklepu."
 
-#: src/Admin/SettingsPage.php:202
-msgid "The action could not be started. Action Scheduler (part of WooCommerce) is not available."
-msgstr "Nie udało się uruchomić działania. Action Scheduler (część WooCommerce) jest niedostępny."
+#: src/Admin/SettingsPage.php:206
+msgid ""
+"The action could not be started. Action Scheduler (part of WooCommerce) is "
+"not available."
+msgstr ""
+"Nie udało się uruchomić działania. Action Scheduler (część WooCommerce) jest "
+"niedostępny."
 
-#: src/Admin/SettingsPage.php:203
+#: src/Admin/SettingsPage.php:207
 msgid "Started in the background. Refresh this page to see the progress."
 msgstr "Uruchomiono w tle. Odśwież stronę, aby zobaczyć postęp."
 
-#: src/Admin/SettingsPage.php:218
+#: src/Admin/SettingsPage.php:222
 msgid "Rules"
 msgstr "Zasady"
 
-#: src/Admin/SettingsPage.php:221
+#: src/Admin/SettingsPage.php:225
 msgid "Preset"
 msgstr "Ustawienia wstępne"
 
-#: src/Admin/SettingsPage.php:227
-msgid "A preset fills the three rules below when you save. Presets are starting points, not legal advice: confirm the rules of the country you sell to. Choose \"Custom rules\" to set them yourself."
-msgstr "Ustawienia wstępne wypełniają trzy poniższe zasady przy zapisie. To punkt wyjścia, a nie porada prawna: sprawdź przepisy kraju, w którym sprzedajesz. Wybierz „Własne zasady”, aby ustawić je samodzielnie."
-
 #: src/Admin/SettingsPage.php:231
+msgid ""
+"A preset fills the three rules below when you save. Presets are starting "
+"points, not legal advice: confirm the rules of the country you sell to. "
+"Choose \"Custom rules\" to set them yourself."
+msgstr ""
+"Ustawienia wstępne wypełniają trzy poniższe zasady przy zapisie. To punkt "
+"wyjścia, a nie porada prawna: sprawdź przepisy kraju, w którym sprzedajesz. "
+"Wybierz „Własne zasady”, aby ustawić je samodzielnie."
+
+#: src/Admin/SettingsPage.php:235
 msgid "Period before the discount (days)"
 msgstr "Okres przed obniżką (dni)"
 
-#: src/Admin/SettingsPage.php:240
-msgid "At least 30 days. The period ends when the current discount started and begins at midnight that many days earlier. For progressive discounts it ends when the first discount started."
-msgstr "Co najmniej 30 dni. Okres kończy się w chwili rozpoczęcia bieżącej obniżki i zaczyna o północy odpowiednią liczbę dni wcześniej. Przy obniżkach stopniowych kończy się w chwili rozpoczęcia pierwszej obniżki."
+#: src/Admin/SettingsPage.php:244
+msgid ""
+"At least 30 days. The period ends when the current discount started and "
+"begins at midnight that many days earlier. For progressive discounts it ends "
+"when the first discount started."
+msgstr ""
+"Co najmniej 30 dni. Okres kończy się w chwili rozpoczęcia bieżącej obniżki i "
+"zaczyna o północy odpowiednią liczbę dni wcześniej. Przy obniżkach "
+"stopniowych kończy się w chwili rozpoczęcia pierwszej obniżki."
 
-#: src/Admin/SettingsPage.php:242
+#: src/Admin/SettingsPage.php:246
 msgid "Products on the market for less than the period"
 msgstr "Produkty w sprzedaży krócej niż okres"
 
-#: src/Admin/SettingsPage.php:244
+#: src/Admin/SettingsPage.php:248
 msgid "Hide the notice (strict)"
 msgstr "Ukryj informację (ściśle)"
 
-#: src/Admin/SettingsPage.php:245
-msgid "Use the lowest price since the product was launched (only where your country allows a shorter period)"
-msgstr "Użyj najniższej ceny od rozpoczęcia sprzedaży produktu (tylko gdy przepisy Twojego kraju dopuszczają krótszy okres)"
+#: src/Admin/SettingsPage.php:249
+msgid ""
+"Use the lowest price since the product was launched (only where your country "
+"allows a shorter period)"
+msgstr ""
+"Użyj najniższej ceny od rozpoczęcia sprzedaży produktu (tylko gdy przepisy "
+"Twojego kraju dopuszczają krótszy okres)"
 
-#: src/Admin/SettingsPage.php:261
-msgid "Do not show the notice for products (or categories) marked as perishable. Only where your country exempts perishable goods."
-msgstr "Nie pokazuj informacji dla produktów (lub kategorii) oznaczonych jako szybko psujące się. Tylko gdy przepisy Twojego kraju zwalniają towary szybko psujące się."
+#: src/Admin/SettingsPage.php:265
+msgid ""
+"Do not show the notice for products (or categories) marked as perishable. "
+"Only where your country exempts perishable goods."
+msgstr ""
+"Nie pokazuj informacji dla produktów (lub kategorii) oznaczonych jako szybko "
+"psujące się. Tylko gdy przepisy Twojego kraju zwalniają towary szybko "
+"psujące się."
 
-#: src/Admin/SettingsPage.php:267
+#: src/Admin/SettingsPage.php:271
 msgid "Display"
 msgstr "Wyświetlanie"
 
-#: src/Admin/SettingsPage.php:269
+#: src/Admin/SettingsPage.php:273
 msgid "Product page"
 msgstr "Strona produktu"
 
-#: src/Admin/SettingsPage.php:269
-msgid "Show the notice under the price on product pages (classic templates and the Product Price block)."
-msgstr "Pokazuj informację pod ceną na stronach produktów (klasyczne szablony i blok „Cena produktu”)."
+#: src/Admin/SettingsPage.php:273
+msgid ""
+"Show the notice under the price on product pages (classic templates and the "
+"Product Price block)."
+msgstr ""
+"Pokazuj informację pod ceną na stronach produktów (klasyczne szablony i blok "
+"„Cena produktu”)."
 
-#: src/Admin/SettingsPage.php:270
+#: src/Admin/SettingsPage.php:274
 msgid "Shop and category pages"
 msgstr "Strony sklepu i kategorii"
 
-#: src/Admin/SettingsPage.php:270
+#: src/Admin/SettingsPage.php:274
 msgid "Show the notice in product lists, related products and product blocks."
-msgstr "Pokazuj informację na listach produktów, w produktach powiązanych i w blokach produktów."
+msgstr ""
+"Pokazuj informację na listach produktów, w produktach powiązanych i w "
+"blokach produktów."
 
-#: src/Admin/SettingsPage.php:271
+#: src/Admin/SettingsPage.php:275
 msgid "Variations"
 msgstr "Warianty"
 
-#: src/Admin/SettingsPage.php:271
+#: src/Admin/SettingsPage.php:275
 msgid "Show the notice for the selected variation of variable products."
 msgstr "Pokazuj informację dla wybranego wariantu produktów z wariantami."
 
-#: src/Admin/SettingsPage.php:272
+#: src/Admin/SettingsPage.php:276
 msgid "Incomplete history"
 msgstr "Niepełna historia"
 
-#: src/Admin/SettingsPage.php:272
-msgid "Hide the notice when the price history does not cover the whole period (recommended). When unchecked, the text below is shown instead."
-msgstr "Ukryj informację, gdy historia cen nie obejmuje całego okresu (zalecane). Gdy pole jest odznaczone, zamiast niej wyświetlany jest poniższy tekst."
+#: src/Admin/SettingsPage.php:276
+msgid ""
+"Hide the notice when the price history does not cover the whole period "
+"(recommended). When unchecked, the text below is shown instead."
+msgstr ""
+"Ukryj informację, gdy historia cen nie obejmuje całego okresu (zalecane). "
+"Gdy pole jest odznaczone, zamiast niej wyświetlany jest poniższy tekst."
 
-#: src/Admin/SettingsPage.php:274
+#: src/Admin/SettingsPage.php:278
 msgid "Notice text"
 msgstr "Treść informacji"
 
-#: src/Admin/SettingsPage.php:275
+#: src/Admin/SettingsPage.php:279
 msgid "Notice text (period since launch)"
 msgstr "Treść informacji (okres od rozpoczęcia sprzedaży)"
 
-#: src/Admin/SettingsPage.php:276
+#: src/Admin/SettingsPage.php:280
 msgid "Text when the history is incomplete"
 msgstr "Tekst przy niepełnej historii"
 
-#: src/Admin/SettingsPage.php:277
+#: src/Admin/SettingsPage.php:281
 msgid "Placeholders"
 msgstr "Symbole zastępcze"
 
-#: src/Admin/SettingsPage.php:278
-msgid "{price} the lowest price, {days} the number of days, {date} the day the discount started. Leave a text empty to use the translated default."
-msgstr "{price} najniższa cena, {days} liczba dni, {date} dzień rozpoczęcia obniżki. Zostaw pole puste, aby użyć przetłumaczonego tekstu domyślnego."
+#: src/Admin/SettingsPage.php:282
+msgid ""
+"{price} the lowest price, {days} the number of days, {date} the day the "
+"discount started. Leave a text empty to use the translated default."
+msgstr ""
+"{price} najniższa cena, {days} liczba dni, {date} dzień rozpoczęcia obniżki. "
+"Zostaw pole puste, aby użyć przetłumaczonego tekstu domyślnego."
 
 #. translators: %s: shortcode
-#: src/Admin/SettingsPage.php:282
+#: src/Admin/SettingsPage.php:286
 #, php-format
 msgid "To place the notice elsewhere, use the shortcode %s."
 msgstr "Aby umieścić informację w innym miejscu, użyj shortcode’u %s."
 
-#: src/Admin/SettingsPage.php:288
+#: src/Admin/SettingsPage.php:292
 msgid "Data"
 msgstr "Dane"
 
-#: src/Admin/SettingsPage.php:290
+#: src/Admin/SettingsPage.php:294
 msgid "Keep history for (days)"
 msgstr "Przechowuj historię przez (dni)"
 
-#: src/Admin/SettingsPage.php:297
-msgid "Older prices are deleted daily, except the ones still needed for a running discount. Minimum 31 days."
-msgstr "Starsze ceny są usuwane codziennie, z wyjątkiem tych, które są potrzebne dla trwającej obniżki. Minimum 31 dni."
-
 #: src/Admin/SettingsPage.php:301
-msgid "When recording starts for an existing product, assume its current price has applied since the product was last modified. Leave unchecked if other software changes prices without updating products (strict)."
-msgstr "Gdy zapisywanie zaczyna się dla istniejącego produktu, przyjmij, że jego obecna cena obowiązuje od ostatniej modyfikacji produktu. Pozostaw odznaczone, jeśli inne oprogramowanie zmienia ceny bez aktualizowania produktów (ściśle)."
+msgid ""
+"Older prices are deleted daily, except the ones still needed for a running "
+"discount. Minimum 31 days."
+msgstr ""
+"Starsze ceny są usuwane codziennie, z wyjątkiem tych, które są potrzebne dla "
+"trwającej obniżki. Minimum 31 dni."
 
-#: src/Admin/SettingsPage.php:306
+#: src/Admin/SettingsPage.php:305
+msgid ""
+"When recording starts for an existing product, assume its current price has "
+"applied since the product was last modified. Leave unchecked if other "
+"software changes prices without updating products (strict)."
+msgstr ""
+"Gdy zapisywanie zaczyna się dla istniejącego produktu, przyjmij, że jego "
+"obecna cena obowiązuje od ostatniej modyfikacji produktu. Pozostaw "
+"odznaczone, jeśli inne oprogramowanie zmienia ceny bez aktualizowania "
+"produktów (ściśle)."
+
+#: src/Admin/SettingsPage.php:310
 msgid "Uninstall"
 msgstr "Odinstalowanie"
 
-#: src/Admin/SettingsPage.php:307
+#: src/Admin/SettingsPage.php:311
 msgid "Delete the price history and settings when the plugin is deleted."
 msgstr "Usuń historię cen i ustawienia podczas usuwania wtyczki."
 
 #. translators: %d: number of products and variations
-#: src/Admin/SettingsPage.php:402
+#: src/Admin/SettingsPage.php:406
 #, php-format
 msgid "%d product or variation is on sale."
 msgid_plural "%d products and variations are on sale."
@@ -409,110 +583,215 @@ msgstr[0] "%d produkt lub wariant jest w promocji."
 msgstr[1] "%d produkty i warianty są w promocji."
 msgstr[2] "%d produktów i wariantów jest w promocji."
 
-#: src/Admin/SettingsPage.php:405
-msgid "For each one: whether the lowest prior price is known and shown, and if not, why."
-msgstr "Dla każdego z nich: czy najniższa cena sprzed obniżki jest znana i wyświetlana, a jeśli nie – dlaczego."
+#: src/Admin/SettingsPage.php:409
+msgid ""
+"For each one: whether the lowest prior price is known and shown, and if not, "
+"why."
+msgstr ""
+"Dla każdego z nich: czy najniższa cena sprzed obniżki jest znana i "
+"wyświetlana, a jeśli nie – dlaczego."
 
-#: src/Admin/SettingsPage.php:413
+#: src/Admin/SettingsPage.php:417
 msgid "Product"
 msgstr "Produkt"
 
-#: src/Admin/SettingsPage.php:414
+#: src/Admin/SettingsPage.php:418
 msgid "Current price"
 msgstr "Aktualna cena"
 
-#: src/Admin/SettingsPage.php:415
+#: src/Admin/SettingsPage.php:419
 msgid "Lowest prior price"
 msgstr "Najniższa cena sprzed obniżki"
 
-#: src/Admin/SettingsPage.php:416
+#: src/Admin/SettingsPage.php:420
 msgid "Discount started"
 msgstr "Początek obniżki"
 
-#: src/Admin/SettingsPage.php:417
-#: src/Admin/SettingsPage.php:466
+#: src/Admin/SettingsPage.php:421 src/Admin/SettingsPage.php:470
 msgid "Status"
 msgstr "Status"
 
 #. translators: 1: number of stored price records, 2: number of products and variations
-#: src/Admin/SettingsPage.php:470
+#: src/Admin/SettingsPage.php:475
 #, php-format
 msgid "%1$d price records for %2$d products and variations."
 msgstr "Zapisy cen: %1$d, produkty i warianty: %2$d."
 
-#. translators: 1: date and time, 2: number of products checked, 3: number of records added
+#. translators: 1: table size such as "1 MB", 2: number of days
 #: src/Admin/SettingsPage.php:483
 #, php-format
-msgid "Last catalogue check finished %1$s: %2$d products checked, %3$d records added."
-msgstr "Ostatnie sprawdzenie katalogu zakończone %1$s: sprawdzono produktów: %2$d, dodano zapisów: %3$d."
+msgid ""
+"Stored in one table of its own (%1$s, no posts or post meta); history older "
+"than %2$d days is deleted automatically, except prices a running discount "
+"still needs."
+msgstr ""
+"Przechowywane we własnej tabeli (%1$s, bez wpisów i post meta); historia "
+"starsza niż %2$d dni jest usuwana automatycznie, z wyjątkiem cen potrzebnych "
+"trwającej obniżce."
+
+#. translators: %d: number of days
+#: src/Admin/SettingsPage.php:489
+#, php-format
+msgid ""
+"Stored in one table of its own (no posts or post meta); history older than "
+"%d days is deleted automatically, except prices a running discount still "
+"needs."
+msgstr ""
+"Przechowywane we własnej tabeli (bez wpisów i post meta); historia starsza "
+"niż %d dni jest usuwana automatycznie, z wyjątkiem cen potrzebnych trwającej "
+"obniżce."
+
+#. translators: 1: date and time, 2: number of products checked, 3: number of records added
+#: src/Admin/SettingsPage.php:501
+#, php-format
+msgid ""
+"Last catalogue check finished %1$s: %2$d products checked, %3$d records "
+"added."
+msgstr ""
+"Ostatnie sprawdzenie katalogu zakończone %1$s: sprawdzono produktów: %2$d, "
+"dodano zapisów: %3$d."
 
 #. translators: %d: number of products checked so far
-#: src/Admin/SettingsPage.php:490
+#: src/Admin/SettingsPage.php:508
 #, php-format
 msgid "Catalogue check running: %d products checked so far."
 msgstr "Trwa sprawdzanie katalogu: dotąd sprawdzono produktów: %d."
 
-#: src/Admin/SettingsPage.php:496
+#: src/Admin/SettingsPage.php:514
 msgid "Check the catalogue"
 msgstr "Sprawdzanie katalogu"
 
-#: src/Admin/SettingsPage.php:497
-msgid "Records the current price of products that have no history yet, and marks products whose price changed without passing through WooCommerce. Runs in the background."
-msgstr "Zapisuje bieżącą cenę produktów, które nie mają jeszcze historii, i oznacza produkty, których cena zmieniła się z pominięciem WooCommerce. Działa w tle."
+#: src/Admin/SettingsPage.php:515
+msgid ""
+"Records the current price of products that have no history yet, and marks "
+"products whose price changed without passing through WooCommerce. Runs in "
+"the background."
+msgstr ""
+"Zapisuje bieżącą cenę produktów, które nie mają jeszcze historii, i oznacza "
+"produkty, których cena zmieniła się z pominięciem WooCommerce. Działa w tle."
 
-#: src/Admin/SettingsPage.php:498
+#: src/Admin/SettingsPage.php:516
 msgid "Check the catalogue now"
 msgstr "Sprawdź katalog teraz"
 
-#: src/Admin/SettingsPage.php:500
+#: src/Admin/SettingsPage.php:518
 msgid "Import history from another plugin"
 msgstr "Import historii z innej wtyczki"
 
-#: src/Admin/SettingsPage.php:501
-msgid "Reads (never changes) the price history saved by another plugin and adds the prices from before this plugin started recording each product. Only import from a plugin that was active until now; a plugin that was switched off long ago has gaps that cannot be detected. Running an import twice is safe."
-msgstr "Odczytuje (nigdy nie zmienia) historię cen zapisaną przez inną wtyczkę i dodaje ceny sprzed rozpoczęcia zapisu każdego produktu przez tę wtyczkę. Importuj tylko z wtyczki, która była aktywna do teraz; wtyczka wyłączona dawno temu ma luki, których nie da się wykryć. Ponowny import jest bezpieczny."
+#: src/Admin/SettingsPage.php:519
+msgid ""
+"Reads (never changes) the price history saved by another plugin and adds the "
+"prices from before this plugin started recording each product. Only import "
+"from a plugin that was active until now; a plugin that was switched off long "
+"ago has gaps that cannot be detected. Running an import twice is safe."
+msgstr ""
+"Odczytuje (nigdy nie zmienia) historię cen zapisaną przez inną wtyczkę i "
+"dodaje ceny sprzed rozpoczęcia zapisu każdego produktu przez tę wtyczkę. "
+"Importuj tylko z wtyczki, która była aktywna do teraz; wtyczka wyłączona "
+"dawno temu ma luki, których nie da się wykryć. Ponowny import jest "
+"bezpieczny."
 
-#: src/Admin/SettingsPage.php:502
+#: src/Admin/SettingsPage.php:520
 msgid "Plugin"
 msgstr "Wtyczka"
 
-#: src/Admin/SettingsPage.php:502
+#: src/Admin/SettingsPage.php:520
 msgid "Data found"
 msgstr "Znalezione dane"
 
-#: src/Admin/SettingsPage.php:502
+#: src/Admin/SettingsPage.php:520
 msgid "Last import"
 msgstr "Ostatni import"
 
 #. translators: 1: date and time, 2: imported records, 3: skipped entries
-#: src/Admin/SettingsPage.php:516
+#: src/Admin/SettingsPage.php:534
 #, php-format
 msgid "%1$s: %2$d imported, %3$d skipped"
 msgstr "%1$s: zaimportowano %2$d, pominięto %3$d"
 
-#: src/Admin/SettingsPage.php:521
+#: src/Admin/SettingsPage.php:539
 msgid "Running…"
 msgstr "W toku…"
 
-#: src/Admin/SettingsPage.php:528
+#: src/Admin/SettingsPage.php:546
 msgid "Import"
 msgstr "Importuj"
 
-#: src/Admin/SettingsPage.php:534
+#: src/Admin/SettingsPage.php:554
 msgid "Background tasks"
 msgstr "Zadania w tle"
 
 #. translators: %d: number of pending background tasks
-#: src/Admin/SettingsPage.php:540
+#: src/Admin/SettingsPage.php:560
 #, php-format
 msgid "Pending tasks: %d."
 msgstr "Oczekujące zadania: %d."
 
-#: src/Admin/SettingsPage.php:555
+#: src/Admin/SettingsPage.php:575
 msgid "View in WooCommerce → Status → Scheduled Actions"
 msgstr "Zobacz w WooCommerce → Status → Zaplanowane działania"
 
-#: src/Admin/SettingsPage.php:581
+#: src/Admin/SettingsPage.php:583
+msgid "Add prices from your own records"
+msgstr "Dodaj ceny z własnych danych"
+
+#: src/Admin/SettingsPage.php:584
+msgid ""
+"Products that were already on sale when this plugin started recording show "
+"no notice until the history covers the whole period. If your shop system, "
+"accounting or price lists show which prices applied before, upload them "
+"here: each line is the price that applied from a day until the next line of "
+"the same product. Lines dated after the plugin started recording a product "
+"are refused, so the recorded history always wins. You are responsible for "
+"these prices; keep the records they come from."
+msgstr ""
+"Produkty, które były już w promocji, gdy wtyczka zaczęła zapisywać ceny, nie "
+"pokazują informacji, dopóki historia nie obejmie całego okresu. Jeśli system "
+"sklepu, księgowość lub cenniki pokazują, jakie ceny obowiązywały wcześniej, "
+"prześlij je tutaj: każdy wiersz to cena obowiązująca od danego dnia do "
+"następnego wiersza tego samego produktu. Wiersze z datą po rozpoczęciu "
+"zapisywania produktu są odrzucane, więc zapisana historia zawsze ma "
+"pierwszeństwo. Odpowiadasz za te ceny; zachowaj dokumenty, z których "
+"pochodzą."
+
+#: src/Admin/SettingsPage.php:585
+msgid ""
+"CSV columns: product ID or SKU, date (YYYY-MM-DD), regular price, sale price "
+"(empty when there was no sale). A header line is allowed. Example:"
+msgstr ""
+"Kolumny CSV: ID lub SKU produktu, data (RRRR-MM-DD), cena regularna, cena "
+"promocyjna (puste, gdy nie było promocji). Dozwolony wiersz nagłówka. "
+"Przykład:"
+
+#. translators: 1: number of prices added, 2: number of lines not added
+#: src/Admin/SettingsPage.php:597
+#, php-format
+msgid "Prices added: %1$d; lines not added: %2$d."
+msgstr "Dodane ceny: %1$d; niedodane wiersze: %2$d."
+
+#. translators: 1: line number, 2: product ID or SKU, 3: reason
+#: src/Admin/SettingsPage.php:611
+#, php-format
+msgid "Line %1$d (%2$s): %3$s"
+msgstr "Wiersz %1$d (%2$s): %3$s"
+
+#: src/Admin/SettingsPage.php:627
+msgid "CSV file"
+msgstr "Plik CSV"
+
+#: src/Admin/SettingsPage.php:629
+msgid "Upload and add prices"
+msgstr "Prześlij i dodaj ceny"
+
+#: src/Admin/SettingsPage.php:631
+msgid ""
+"Also on the product edit screen (one product) and with WP-CLI: wp pnscripts-"
+"price-history import-records file.csv"
+msgstr ""
+"Również na ekranie edycji produktu (jeden produkt) i przez WP-CLI: wp "
+"pnscripts-price-history import-records file.csv"
+
+#: src/Admin/SettingsPage.php:639 src/Admin/SettingsPage.php:686
 msgid "Sorry, you are not allowed to do that."
 msgstr "Nie masz uprawnień do wykonania tej czynności."
 
@@ -523,12 +802,17 @@ msgstr "Najniższa cena z {days} dni przed obniżką: {price}"
 
 #. translators: Keep the placeholders {days} (number of days) and {price} (formatted price) unchanged.
 #: src/Display/NoticeRenderer.php:51
-msgid "Lowest price since this product was launched ({days} days) before the discount: {price}"
-msgstr "Najniższa cena od rozpoczęcia sprzedaży produktu ({days} dni) przed obniżką: {price}"
+msgid ""
+"Lowest price since this product was launched ({days} days) before the "
+"discount: {price}"
+msgstr ""
+"Najniższa cena od rozpoczęcia sprzedaży produktu ({days} dni) przed obniżką: "
+"{price}"
 
 #. translators: Keep the placeholder {days} (number of days) unchanged.
 #: src/Display/NoticeRenderer.php:59
-msgid "The lowest price in the {days} days before the discount is not available."
+msgid ""
+"The lowest price in the {days} days before the discount is not available."
 msgstr "Najniższa cena z {days} dni przed obniżką jest niedostępna."
 
 #: src/Import/Importers.php:47
@@ -544,10 +828,72 @@ msgid "Omnibus by iLabs"
 msgstr "Omnibus by iLabs"
 
 #. translators: %s: minimum WooCommerce version
-#: src/Plugin.php:263
+#: src/Plugin.php:272
 #, php-format
 msgid "PN Scripts Price History needs WooCommerce %s or newer to be active."
-msgstr "PN Scripts Price History wymaga aktywnej wtyczki WooCommerce w wersji %s lub nowszej."
+msgstr ""
+"PN Scripts Price History wymaga aktywnej wtyczki WooCommerce w wersji %s lub "
+"nowszej."
+
+#: src/Records/ManualRecords.php:123
+msgid "The date must be a real day written as YYYY-MM-DD."
+msgstr "Data musi być istniejącym dniem w formacie RRRR-MM-DD."
+
+#: src/Records/ManualRecords.php:124
+msgid "The date is in the future."
+msgstr "Data jest w przyszłości."
+
+#: src/Records/ManualRecords.php:125
+msgid ""
+"The plugin was already recording this product on that day; its own history "
+"is kept and cannot be overwritten."
+msgstr ""
+"Tego dnia wtyczka już zapisywała ten produkt; jej własna historia jest "
+"zachowana i nie można jej nadpisać."
+
+#: src/Records/ManualRecords.php:126
+msgid ""
+"The regular price is missing or not a number (write 1299.90 or 1299,90, "
+"without thousands separators)."
+msgstr ""
+"Brak ceny regularnej lub nie jest liczbą (wpisz 1299.90 lub 1299,90, bez "
+"separatorów tysięcy)."
+
+#: src/Records/ManualRecords.php:127
+msgid ""
+"The sale price is not a number (write 1299.90 or 1299,90, without thousands "
+"separators)."
+msgstr ""
+"Cena promocyjna nie jest liczbą (wpisz 1299.90 lub 1299,90, bez separatorów "
+"tysięcy)."
+
+#: src/Records/ManualRecords.php:128
+msgid "The sale price must be lower than the regular price."
+msgstr "Cena promocyjna musi być niższa od regularnej."
+
+#: src/Records/ManualRecords.php:129
+msgid "A price from your records already exists for that day."
+msgstr "Dla tego dnia istnieje już cena z Twoich danych."
+
+#: src/Records/ManualRecords.php:130
+msgid "No product or variation with this ID or SKU."
+msgstr "Brak produktu lub wariantu o tym ID lub SKU."
+
+#: src/Records/ManualRecords.php:131
+msgid ""
+"Variable and grouped products have no own price; enter the price of each "
+"variation or child product."
+msgstr ""
+"Produkty zmienne i grupowe nie mają własnej ceny; wpisz cenę każdego "
+"wariantu lub produktu podrzędnego."
+
+#: src/Records/ManualRecords.php:132
+msgid "No CSV file was received, or it is larger than 2 MB."
+msgstr "Nie otrzymano pliku CSV lub jest większy niż 2 MB."
+
+#: src/Records/ManualRecords.php:133
+msgid "The price could not be saved."
+msgstr "Nie udało się zapisać ceny."
 
 #: src/Settings.php:128
 msgid "EU, strict: 30 days, no optional exemptions"
@@ -562,8 +908,12 @@ msgid "Germany: 30 days, perishable goods may be excluded"
 msgstr "Niemcy: 30 dni, towary szybko psujące się mogą być wyłączone"
 
 #: src/Settings.php:131
-msgid "Poland: 30 days, products offered for less than 30 days use the period since launch"
-msgstr "Polska: 30 dni, dla produktów oferowanych krócej niż 30 dni stosuje się okres od rozpoczęcia sprzedaży"
+msgid ""
+"Poland: 30 days, products offered for less than 30 days use the period since "
+"launch"
+msgstr ""
+"Polska: 30 dni, dla produktów oferowanych krócej niż 30 dni stosuje się "
+"okres od rozpoczęcia sprzedaży"
 
 #: src/Settings.php:132
 msgid "Custom rules"

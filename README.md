@@ -20,8 +20,9 @@ This is the free edition (planned for WordPress.org). It has no locked features 
 - **Display**: appended to WooCommerce price HTML, which covers classic templates, the Product Price block, product collections, variations (`woocommerce_available_variation`) and the Store API; shortcode `[pnscripts_price_history id="…"]` (1.0.x alias `[pnscripts_omnibus_price]`); prices converted with `wc_get_price_to_display()` (tax display of the shop); hidden while the period reaches back before a tax configuration change (`Capture\TaxWatcher`) or a shop currency change.
 - **Background work** (Action Scheduler): first baseline of the catalogue, repair, resume after the plugin was inactive (the inactive period becomes "unknown" for products changed meanwhile), daily retention (default 90 days, minimum 31, never deleting rows a running reduction needs).
 - **Imports** (read-only): Omnibus by iWorks (post type `iw_omnibus_price_log` and `_iwo_price_*` meta), WC Price History (`{prefix}wc_price_history` table and `_wc_price_history` meta), Omnibus by iLabs (`omnibus_by_ilabs_prices_history` meta). Imports only fill the time before this plugin's own first record of each product.
+- **Prices from the owner's records** (1.1.0): product screen fields, CSV upload (Tools tab; product ID or SKU, date, regular, sale) and `wp pnscripts-price-history add-record|import-records`. Stored as source `import:manual` (same rule as imports: only before the plugin's own first record, never over it); such a row also counts as proof that the product was offered on that day for the new-product rule, so a shop moved from another system (products created recently by an import) gets a notice from its old price lists. Pure validation in `src/Domain/ManualEntry.php`, service in `src/Records/ManualRecords.php`.
 - **Admin**: WooCommerce → Price History (settings with presets, coverage report, import and tools), history metabox on the product screen, perishable flags.
-- **WP-CLI**: `wp pnscripts-price-history reference <id>`, `history <id>`, `backfill [--mode=repair|baseline]`, `import <omnibus|wc-price-history|omnibus-by-ilabs>`, `prune`.
+- **WP-CLI**: `wp pnscripts-price-history reference <id>`, `history <id>`, `backfill [--mode=repair|baseline]`, `import <omnibus|wc-price-history|omnibus-by-ilabs>`, `add-record <id|sku> <date> <regular> [<sale>]`, `import-records <file.csv>`, `prune`.
 - **i18n**: `languages/pnscripts-price-history.pot`; bundled `bg_BG`, `pl_PL`, `de_DE` (used only when no translate.wordpress.org pack is installed).
 
 ## Architecture
@@ -37,6 +38,7 @@ src/Reference/               ReferenceService (product → records → calculato
 src/Display/                 NoticeRenderer, PriceDisplay (price HTML + variations), Shortcode
 src/Jobs/                    Queue (Action Scheduler), Backfill, Retention
 src/Import/                  ImportMapper (pure), Importers (readers), ImportRunner
+src/Records/                 ManualRecords (prices from the owner's records)
 src/Admin/                   SettingsPage, ProductPanel, CategoryFields, Labels
 src/Cli/                     WP-CLI command
 src/Licensing/               LicenseInterface + FreeLicense (no-op)
@@ -76,7 +78,8 @@ composer test:integration
 # The same suite on a real MySQL/MariaDB database (a disposable one: it is emptied first)
 DB=mysql DB_HOST=127.0.0.1:3306 DB_NAME=price_history_tests DB_USER=root DB_PASS= TEST_DIR=/path/to/mysql-site bin/install-wp-tests.sh
 PNSCRIPTS_OMNIBUS_WP_DIR=/path/to/mysql-site/wordpress composer test:integration
-# 2026-10-16: 47 tests / 273 assertions OK on MySQL 8.0.46 with WordPress 7.1.3 + WooCommerce 11.2.1
+# 2026-10-16 (1.1.0): 56 tests / 327 assertions OK on MySQL 8.0.46 with WordPress 7.1.3 + WooCommerce 11.2.1 (SQLite: 56 / 326)
+# Buyer check from the release zip (fresh site, MySQL, WP-CLI + front end + Plugin Check): 11/11
 
 bin/build-zip.sh              # build/pnscripts-price-history-<version>.zip without development files
 ```

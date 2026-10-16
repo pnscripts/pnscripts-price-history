@@ -43,3 +43,45 @@
 	display: inline-block;
 	margin: 0 0 8px;
 }
+
+.pnscripts-omnibus-manual {
+	margin-top: 12px;
+}
+
+.pnscripts-omnibus-manual summary {
+	cursor: pointer;
+	font-weight: 600;
+}
+
+.pnscripts-omnibus-manual-fields label {
+	margin-right: 4px;
+}
+
+.pnscripts-omnibus-manual-fields input {
+	margin-right: 12px;
+}
+
+.pnscripts-omnibus-remove {
+	margin-left: 8px;
+	white-space: nowrap;
+}
+
+.pnscripts-omnibus-csv-example {
+	display: block;
+	width: max-content;
+	max-width: 100%;
+	overflow-x: auto;
+	padding: 8px 12px;
+	background: #f6f7f7;
+	border: 1px solid #dcdcde;
+}
+
+.pnscripts-omnibus-csv-errors {
+	list-style: disc;
+	margin-left: 20px;
+}
+
+.pnscripts-omnibus-scroll {
+	max-width: 100%;
+	overflow-x: auto;
+}

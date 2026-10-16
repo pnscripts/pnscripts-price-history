@@ -2,14 +2,14 @@
 # This file is distributed under the GPL-2.0-or-later.
 msgid ""
 msgstr ""
-"Project-Id-Version: PN Scripts Price History 1.0.3\n"
-"Report-Msgid-Bugs-To: https://pnscripts.com/marketplace/pnscripts-price-history\n"
+"Project-Id-Version: PN Scripts Price History for Discounts 1.1.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/pnscripts-price-history\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: PN Scripts <https://pnscripts.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-06T07:41:02+00:00\n"
+"POT-Creation-Date: 2026-10-16T16:37:09+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: pnscripts-price-history\n"
@@ -41,8 +41,8 @@ msgstr ""
 
 #: src/Admin/CategoryFields.php:43
 #: src/Admin/CategoryFields.php:55
-#: src/Admin/ProductPanel.php:206
-#: src/Admin/SettingsPage.php:260
+#: src/Admin/ProductPanel.php:349
+#: src/Admin/SettingsPage.php:264
 msgid "Perishable goods"
 msgstr ""
 
@@ -151,7 +151,7 @@ msgid "Code"
 msgstr ""
 
 #: src/Admin/Labels.php:74
-#: src/Admin/SettingsPage.php:300
+#: src/Admin/SettingsPage.php:304
 msgid "First record"
 msgstr ""
 
@@ -175,343 +175,439 @@ msgstr ""
 msgid "Imported (Omnibus by iLabs)"
 msgstr ""
 
-#: src/Admin/ProductPanel.php:66
+#: src/Admin/Labels.php:80
+msgid "Your records"
+msgstr ""
+
+#: src/Admin/ProductPanel.php:75
 msgid "Price history and lowest prior price"
 msgstr ""
 
-#: src/Admin/ProductPanel.php:85
+#: src/Admin/ProductPanel.php:94
 msgid "Recorded automatically on every price change. This plugin helps display prices; you remain responsible for compliance."
 msgstr ""
 
-#: src/Admin/ProductPanel.php:90
+#: src/Admin/ProductPanel.php:99
 msgid "No variations yet."
 msgstr ""
 
-#: src/Admin/ProductPanel.php:100
+#: src/Admin/ProductPanel.php:109
 msgid "Grouped products have no own price; see each child product."
 msgstr ""
 
-#: src/Admin/ProductPanel.php:118
+#: src/Admin/ProductPanel.php:127
 msgid "No prices recorded yet."
 msgstr ""
 
-#: src/Admin/ProductPanel.php:123
+#: src/Admin/ProductPanel.php:133
+#: src/Admin/ProductPanel.php:178
 msgid "From"
 msgstr ""
 
-#: src/Admin/ProductPanel.php:124
+#: src/Admin/ProductPanel.php:134
 msgid "Regular"
 msgstr ""
 
-#: src/Admin/ProductPanel.php:125
+#: src/Admin/ProductPanel.php:135
 msgid "Sale"
 msgstr ""
 
-#: src/Admin/ProductPanel.php:126
+#: src/Admin/ProductPanel.php:136
 msgid "Sale schedule"
 msgstr ""
 
-#: src/Admin/ProductPanel.php:127
+#: src/Admin/ProductPanel.php:137
 msgid "Price"
 msgstr ""
 
-#: src/Admin/ProductPanel.php:128
+#: src/Admin/ProductPanel.php:138
 msgid "Source"
 msgstr ""
 
-#: src/Admin/ProductPanel.php:137
+#: src/Admin/ProductPanel.php:147
 msgid "Prices as entered in the shop (before the tax display setting). Newest first, up to 30 rows."
 msgstr ""
 
 #: src/Admin/ProductPanel.php:164
+msgid "Add a price from your own records"
+msgstr ""
+
+#. translators: %s: date when the plugin started recording this product
+#: src/Admin/ProductPanel.php:169
+#, php-format
+msgid "For the time before this plugin started recording this product (%s): the price that applied from a day until the next row. Add one row for the regular price and one for the day the current discount started. You are responsible for these prices; keep the records they come from."
+msgstr ""
+
+#: src/Admin/ProductPanel.php:172
+msgid "The price that applied from a day until the next row. You are responsible for these prices; keep the records they come from."
+msgstr ""
+
+#: src/Admin/ProductPanel.php:185
+msgid "Regular price"
+msgstr ""
+
+#: src/Admin/ProductPanel.php:191
+msgid "Sale price (optional)"
+msgstr ""
+
+#: src/Admin/ProductPanel.php:195
+msgid "Saved when you update the product. Many products at once: WooCommerce → Price History → Import and tools."
+msgstr ""
+
+#: src/Admin/ProductPanel.php:219
+msgid "A price from your records was removed."
+msgstr ""
+
+#: src/Admin/ProductPanel.php:238
+msgid "The price from your records was added to the price history."
+msgstr ""
+
+#: src/Admin/ProductPanel.php:266
+msgid "Price History:"
+msgstr ""
+
+#: src/Admin/ProductPanel.php:298
 msgid "(unknown before)"
 msgstr ""
 
+#: src/Admin/ProductPanel.php:305
+msgid "Remove"
+msgstr ""
+
 #. translators: 1: number of days, 2: date when the discount started
-#: src/Admin/ProductPanel.php:183
+#: src/Admin/ProductPanel.php:326
 #, php-format
 msgid "lowest price in the %1$d days before the discount that started on %2$s:"
 msgstr ""
 
-#: src/Admin/ProductPanel.php:207
+#: src/Admin/ProductPanel.php:350
 msgid "Goods that perish or expire quickly. Only used when the perishable-goods exemption is enabled in the Price History settings."
 msgstr ""
 
-#: src/Admin/SettingsPage.php:70
+#: src/Admin/SettingsPage.php:74
 msgid "Price History: lowest price in the 30 days before a discount"
 msgstr ""
 
-#: src/Admin/SettingsPage.php:71
+#: src/Admin/SettingsPage.php:75
 msgid "Price History"
 msgstr ""
 
-#: src/Admin/SettingsPage.php:88
-#: src/Admin/SettingsPage.php:145
+#: src/Admin/SettingsPage.php:92
+#: src/Admin/SettingsPage.php:149
 msgid "Settings"
 msgstr ""
 
-#: src/Admin/SettingsPage.php:140
+#: src/Admin/SettingsPage.php:144
 msgid "Sorry, you are not allowed to access this page."
 msgstr ""
 
-#: src/Admin/SettingsPage.php:146
+#: src/Admin/SettingsPage.php:150
 msgid "Coverage report"
 msgstr ""
 
-#: src/Admin/SettingsPage.php:147
+#: src/Admin/SettingsPage.php:151
 msgid "Import and tools"
 msgstr ""
 
-#: src/Admin/SettingsPage.php:161
+#: src/Admin/SettingsPage.php:165
 msgid "Price History: lowest price before a discount"
 msgstr ""
 
-#: src/Admin/SettingsPage.php:173
+#: src/Admin/SettingsPage.php:177
 msgid "This plugin helps display prices; you remain responsible for compliance. It does not give legal advice. Check the rules that apply to your shop."
 msgstr ""
 
-#: src/Admin/SettingsPage.php:202
+#: src/Admin/SettingsPage.php:206
 msgid "The action could not be started. Action Scheduler (part of WooCommerce) is not available."
 msgstr ""
 
-#: src/Admin/SettingsPage.php:203
+#: src/Admin/SettingsPage.php:207
 msgid "Started in the background. Refresh this page to see the progress."
 msgstr ""
 
-#: src/Admin/SettingsPage.php:218
+#: src/Admin/SettingsPage.php:222
 msgid "Rules"
 msgstr ""
 
-#: src/Admin/SettingsPage.php:221
+#: src/Admin/SettingsPage.php:225
 msgid "Preset"
 msgstr ""
 
-#: src/Admin/SettingsPage.php:227
+#: src/Admin/SettingsPage.php:231
 msgid "A preset fills the three rules below when you save. Presets are starting points, not legal advice: confirm the rules of the country you sell to. Choose \"Custom rules\" to set them yourself."
 msgstr ""
 
-#: src/Admin/SettingsPage.php:231
+#: src/Admin/SettingsPage.php:235
 msgid "Period before the discount (days)"
 msgstr ""
 
-#: src/Admin/SettingsPage.php:240
+#: src/Admin/SettingsPage.php:244
 msgid "At least 30 days. The period ends when the current discount started and begins at midnight that many days earlier. For progressive discounts it ends when the first discount started."
 msgstr ""
 
-#: src/Admin/SettingsPage.php:242
+#: src/Admin/SettingsPage.php:246
 msgid "Products on the market for less than the period"
 msgstr ""
 
-#: src/Admin/SettingsPage.php:244
+#: src/Admin/SettingsPage.php:248
 msgid "Hide the notice (strict)"
 msgstr ""
 
-#: src/Admin/SettingsPage.php:245
+#: src/Admin/SettingsPage.php:249
 msgid "Use the lowest price since the product was launched (only where your country allows a shorter period)"
 msgstr ""
 
-#: src/Admin/SettingsPage.php:261
+#: src/Admin/SettingsPage.php:265
 msgid "Do not show the notice for products (or categories) marked as perishable. Only where your country exempts perishable goods."
 msgstr ""
 
-#: src/Admin/SettingsPage.php:267
+#: src/Admin/SettingsPage.php:271
 msgid "Display"
 msgstr ""
 
-#: src/Admin/SettingsPage.php:269
+#: src/Admin/SettingsPage.php:273
 msgid "Product page"
 msgstr ""
 
-#: src/Admin/SettingsPage.php:269
+#: src/Admin/SettingsPage.php:273
 msgid "Show the notice under the price on product pages (classic templates and the Product Price block)."
 msgstr ""
 
-#: src/Admin/SettingsPage.php:270
+#: src/Admin/SettingsPage.php:274
 msgid "Shop and category pages"
 msgstr ""
 
-#: src/Admin/SettingsPage.php:270
+#: src/Admin/SettingsPage.php:274
 msgid "Show the notice in product lists, related products and product blocks."
 msgstr ""
 
-#: src/Admin/SettingsPage.php:271
+#: src/Admin/SettingsPage.php:275
 msgid "Variations"
 msgstr ""
 
-#: src/Admin/SettingsPage.php:271
+#: src/Admin/SettingsPage.php:275
 msgid "Show the notice for the selected variation of variable products."
 msgstr ""
 
-#: src/Admin/SettingsPage.php:272
+#: src/Admin/SettingsPage.php:276
 msgid "Incomplete history"
 msgstr ""
 
-#: src/Admin/SettingsPage.php:272
+#: src/Admin/SettingsPage.php:276
 msgid "Hide the notice when the price history does not cover the whole period (recommended). When unchecked, the text below is shown instead."
 msgstr ""
 
-#: src/Admin/SettingsPage.php:274
+#: src/Admin/SettingsPage.php:278
 msgid "Notice text"
 msgstr ""
 
-#: src/Admin/SettingsPage.php:275
+#: src/Admin/SettingsPage.php:279
 msgid "Notice text (period since launch)"
 msgstr ""
 
-#: src/Admin/SettingsPage.php:276
+#: src/Admin/SettingsPage.php:280
 msgid "Text when the history is incomplete"
 msgstr ""
 
-#: src/Admin/SettingsPage.php:277
+#: src/Admin/SettingsPage.php:281
 msgid "Placeholders"
 msgstr ""
 
-#: src/Admin/SettingsPage.php:278
+#: src/Admin/SettingsPage.php:282
 msgid "{price} the lowest price, {days} the number of days, {date} the day the discount started. Leave a text empty to use the translated default."
 msgstr ""
 
 #. translators: %s: shortcode
-#: src/Admin/SettingsPage.php:282
+#: src/Admin/SettingsPage.php:286
 #, php-format
 msgid "To place the notice elsewhere, use the shortcode %s."
 msgstr ""
 
-#: src/Admin/SettingsPage.php:288
+#: src/Admin/SettingsPage.php:292
 msgid "Data"
 msgstr ""
 
-#: src/Admin/SettingsPage.php:290
+#: src/Admin/SettingsPage.php:294
 msgid "Keep history for (days)"
 msgstr ""
 
-#: src/Admin/SettingsPage.php:297
+#: src/Admin/SettingsPage.php:301
 msgid "Older prices are deleted daily, except the ones still needed for a running discount. Minimum 31 days."
 msgstr ""
 
-#: src/Admin/SettingsPage.php:301
+#: src/Admin/SettingsPage.php:305
 msgid "When recording starts for an existing product, assume its current price has applied since the product was last modified. Leave unchecked if other software changes prices without updating products (strict)."
 msgstr ""
 
-#: src/Admin/SettingsPage.php:306
+#: src/Admin/SettingsPage.php:310
 msgid "Uninstall"
 msgstr ""
 
-#: src/Admin/SettingsPage.php:307
+#: src/Admin/SettingsPage.php:311
 msgid "Delete the price history and settings when the plugin is deleted."
 msgstr ""
 
 #. translators: %d: number of products and variations
-#: src/Admin/SettingsPage.php:402
+#: src/Admin/SettingsPage.php:406
 #, php-format
 msgid "%d product or variation is on sale."
 msgid_plural "%d products and variations are on sale."
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/Admin/SettingsPage.php:405
+#: src/Admin/SettingsPage.php:409
 msgid "For each one: whether the lowest prior price is known and shown, and if not, why."
 msgstr ""
 
-#: src/Admin/SettingsPage.php:413
+#: src/Admin/SettingsPage.php:417
 msgid "Product"
 msgstr ""
 
-#: src/Admin/SettingsPage.php:414
+#: src/Admin/SettingsPage.php:418
 msgid "Current price"
 msgstr ""
 
-#: src/Admin/SettingsPage.php:415
+#: src/Admin/SettingsPage.php:419
 msgid "Lowest prior price"
 msgstr ""
 
-#: src/Admin/SettingsPage.php:416
+#: src/Admin/SettingsPage.php:420
 msgid "Discount started"
 msgstr ""
 
-#: src/Admin/SettingsPage.php:417
-#: src/Admin/SettingsPage.php:466
+#: src/Admin/SettingsPage.php:421
+#: src/Admin/SettingsPage.php:470
 msgid "Status"
 msgstr ""
 
 #. translators: 1: number of stored price records, 2: number of products and variations
-#: src/Admin/SettingsPage.php:470
+#: src/Admin/SettingsPage.php:475
 #, php-format
 msgid "%1$d price records for %2$d products and variations."
 msgstr ""
 
-#. translators: 1: date and time, 2: number of products checked, 3: number of records added
+#. translators: 1: table size such as "1 MB", 2: number of days
 #: src/Admin/SettingsPage.php:483
+#, php-format
+msgid "Stored in one table of its own (%1$s, no posts or post meta); history older than %2$d days is deleted automatically, except prices a running discount still needs."
+msgstr ""
+
+#. translators: %d: number of days
+#: src/Admin/SettingsPage.php:489
+#, php-format
+msgid "Stored in one table of its own (no posts or post meta); history older than %d days is deleted automatically, except prices a running discount still needs."
+msgstr ""
+
+#. translators: 1: date and time, 2: number of products checked, 3: number of records added
+#: src/Admin/SettingsPage.php:501
 #, php-format
 msgid "Last catalogue check finished %1$s: %2$d products checked, %3$d records added."
 msgstr ""
 
 #. translators: %d: number of products checked so far
-#: src/Admin/SettingsPage.php:490
+#: src/Admin/SettingsPage.php:508
 #, php-format
 msgid "Catalogue check running: %d products checked so far."
 msgstr ""
 
-#: src/Admin/SettingsPage.php:496
+#: src/Admin/SettingsPage.php:514
 msgid "Check the catalogue"
 msgstr ""
 
-#: src/Admin/SettingsPage.php:497
+#: src/Admin/SettingsPage.php:515
 msgid "Records the current price of products that have no history yet, and marks products whose price changed without passing through WooCommerce. Runs in the background."
 msgstr ""
 
-#: src/Admin/SettingsPage.php:498
+#: src/Admin/SettingsPage.php:516
 msgid "Check the catalogue now"
 msgstr ""
 
-#: src/Admin/SettingsPage.php:500
+#: src/Admin/SettingsPage.php:518
 msgid "Import history from another plugin"
 msgstr ""
 
-#: src/Admin/SettingsPage.php:501
+#: src/Admin/SettingsPage.php:519
 msgid "Reads (never changes) the price history saved by another plugin and adds the prices from before this plugin started recording each product. Only import from a plugin that was active until now; a plugin that was switched off long ago has gaps that cannot be detected. Running an import twice is safe."
 msgstr ""
 
-#: src/Admin/SettingsPage.php:502
+#: src/Admin/SettingsPage.php:520
 msgid "Plugin"
 msgstr ""
 
-#: src/Admin/SettingsPage.php:502
+#: src/Admin/SettingsPage.php:520
 msgid "Data found"
 msgstr ""
 
-#: src/Admin/SettingsPage.php:502
+#: src/Admin/SettingsPage.php:520
 msgid "Last import"
 msgstr ""
 
 #. translators: 1: date and time, 2: imported records, 3: skipped entries
-#: src/Admin/SettingsPage.php:516
+#: src/Admin/SettingsPage.php:534
 #, php-format
 msgid "%1$s: %2$d imported, %3$d skipped"
 msgstr ""
 
-#: src/Admin/SettingsPage.php:521
+#: src/Admin/SettingsPage.php:539
 msgid "Running…"
 msgstr ""
 
-#: src/Admin/SettingsPage.php:528
+#: src/Admin/SettingsPage.php:546
 msgid "Import"
 msgstr ""
 
-#: src/Admin/SettingsPage.php:534
+#: src/Admin/SettingsPage.php:554
 msgid "Background tasks"
 msgstr ""
 
 #. translators: %d: number of pending background tasks
-#: src/Admin/SettingsPage.php:540
+#: src/Admin/SettingsPage.php:560
 #, php-format
 msgid "Pending tasks: %d."
 msgstr ""
 
-#: src/Admin/SettingsPage.php:555
+#: src/Admin/SettingsPage.php:575
 msgid "View in WooCommerce → Status → Scheduled Actions"
 msgstr ""
 
-#: src/Admin/SettingsPage.php:581
+#: src/Admin/SettingsPage.php:583
+msgid "Add prices from your own records"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:584
+msgid "Products that were already on sale when this plugin started recording show no notice until the history covers the whole period. If your shop system, accounting or price lists show which prices applied before, upload them here: each line is the price that applied from a day until the next line of the same product. Lines dated after the plugin started recording a product are refused, so the recorded history always wins. You are responsible for these prices; keep the records they come from."
+msgstr ""
+
+#: src/Admin/SettingsPage.php:585
+msgid "CSV columns: product ID or SKU, date (YYYY-MM-DD), regular price, sale price (empty when there was no sale). A header line is allowed. Example:"
+msgstr ""
+
+#. translators: 1: number of prices added, 2: number of lines not added
+#: src/Admin/SettingsPage.php:597
+#, php-format
+msgid "Prices added: %1$d; lines not added: %2$d."
+msgstr ""
+
+#. translators: 1: line number, 2: product ID or SKU, 3: reason
+#: src/Admin/SettingsPage.php:611
+#, php-format
+msgid "Line %1$d (%2$s): %3$s"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:627
+msgid "CSV file"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:629
+msgid "Upload and add prices"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:631
+msgid "Also on the product edit screen (one product) and with WP-CLI: wp pnscripts-price-history import-records file.csv"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:639
+#: src/Admin/SettingsPage.php:686
 msgid "Sorry, you are not allowed to do that."
 msgstr ""
 
@@ -543,9 +639,53 @@ msgid "Omnibus by iLabs"
 msgstr ""
 
 #. translators: %s: minimum WooCommerce version
-#: src/Plugin.php:263
+#: src/Plugin.php:272
 #, php-format
 msgid "PN Scripts Price History needs WooCommerce %s or newer to be active."
+msgstr ""
+
+#: src/Records/ManualRecords.php:123
+msgid "The date must be a real day written as YYYY-MM-DD."
+msgstr ""
+
+#: src/Records/ManualRecords.php:124
+msgid "The date is in the future."
+msgstr ""
+
+#: src/Records/ManualRecords.php:125
+msgid "The plugin was already recording this product on that day; its own history is kept and cannot be overwritten."
+msgstr ""
+
+#: src/Records/ManualRecords.php:126
+msgid "The regular price is missing or not a number (write 1299.90 or 1299,90, without thousands separators)."
+msgstr ""
+
+#: src/Records/ManualRecords.php:127
+msgid "The sale price is not a number (write 1299.90 or 1299,90, without thousands separators)."
+msgstr ""
+
+#: src/Records/ManualRecords.php:128
+msgid "The sale price must be lower than the regular price."
+msgstr ""
+
+#: src/Records/ManualRecords.php:129
+msgid "A price from your records already exists for that day."
+msgstr ""
+
+#: src/Records/ManualRecords.php:130
+msgid "No product or variation with this ID or SKU."
+msgstr ""
+
+#: src/Records/ManualRecords.php:131
+msgid "Variable and grouped products have no own price; enter the price of each variation or child product."
+msgstr ""
+
+#: src/Records/ManualRecords.php:132
+msgid "No CSV file was received, or it is larger than 2 MB."
+msgstr ""
+
+#: src/Records/ManualRecords.php:133
+msgid "The price could not be saved."
 msgstr ""
 
 #: src/Settings.php:128

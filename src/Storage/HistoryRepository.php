@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Pnscripts\Omnibus\Storage;
 
+use Pnscripts\Omnibus\Domain\ManualEntry;
 use Pnscripts\Omnibus\Domain\Money;
 use Pnscripts\Omnibus\Domain\PriceRecord;
 
@@ -259,6 +260,48 @@ final class HistoryRepository {
 			'rows'     => (int) ( $row['row_count'] ?? 0 ),
 			'products' => (int) ( $row['product_count'] ?? 0 ),
 		);
+	}
+
+	/**
+	 * Approximate size of the history table in bytes (data + indexes), null when the database cannot tell (SQLite).
+	 */
+	public function table_bytes(): ?int {
+		global $wpdb;
+		if ( defined( 'DB_ENGINE' ) && 'sqlite' === DB_ENGINE ) {
+			return null;
+		}
+		$value = $wpdb->get_var(
+			$wpdb->prepare(
+				'SELECT data_length + index_length FROM information_schema.TABLES WHERE table_schema = DATABASE() AND table_name = %s',
+				Schema::table()
+			)
+		);
+		return is_numeric( $value ) ? (int) $value : null;
+	}
+
+	/**
+	 * Delete one row the shop owner entered from their records (other rows are never deleted this way).
+	 *
+	 * @param int $product_id Product or variation id.
+	 * @param int $id         Row id.
+	 * @return bool Whether a row was deleted.
+	 */
+	public function delete_manual( int $product_id, int $id ): bool {
+		global $wpdb;
+		$deleted = $wpdb->query(
+			$wpdb->prepare(
+				'DELETE FROM %i WHERE id = %d AND product_id = %d AND source = %s',
+				Schema::table(),
+				$id,
+				$product_id,
+				ManualEntry::SOURCE
+			)
+		);
+		if ( is_int( $deleted ) && $deleted > 0 ) {
+			self::bump_cache();
+			return true;
+		}
+		return false;
 	}
 
 	/**
