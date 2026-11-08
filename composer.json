@@ -52,6 +52,15 @@
         "test": "phpunit --testsuite Unit --colors=always",
         "test:integration": "phpunit -c phpunit-integration.xml.dist --colors=always",
         "lint": "phpcs",
-        "analyse": "phpstan analyse --memory-limit=2G"
+        "analyse": "phpstan analyse --memory-limit=2G",
+        "check": [
+            "@composer audit",
+            "@lint",
+            "@analyse",
+            "@test"
+        ]
+    },
+    "scripts-descriptions": {
+        "check": "The checks CI runs, in the same order (integration tests: composer test:integration)."
     }
 }
